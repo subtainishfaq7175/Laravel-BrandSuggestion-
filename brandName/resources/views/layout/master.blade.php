@@ -13,8 +13,10 @@
 
 </head>
 <body>
-    @include('header.header')
+
     @yield('content')
+
+
 
 
     <script
