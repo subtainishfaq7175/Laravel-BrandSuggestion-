@@ -1,33 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title> @yield('title') </title>
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
+    <title>Helium | Responsive Multipurpose Landing Page</title>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="{{url('assets/images/myimage.jpg')}}">
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="{{ url('assets/css/bootstrap.min.css')}}">
+
+    <!-- ICONS -->
+    <link rel="stylesheet" href="{{ url('assets/css/icons/fontawesome/css/style.css')}} ">
+    <link rel="stylesheet" href="{{url('assets/css/icons/style.css')}}">
+
+    <!-- THEME / PLUGIN CSS -->
+    <link rel="stylesheet" href="{{url('assets/js/vendors/slick/slick.css')}}">
+    <link rel="stylesheet" href="{{url('assets/css/prettyphoto.css')}}">
+    <link rel="stylesheet" href="{{url('assets/css/style.css')}}">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
 </head>
 <body>
 
-    @yield('content')
 
 
 
 
-    <script
-            src="https://code.jquery.com/jquery-2.2.4.min.js"
-            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-            crossorigin="anonymous"></script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
-<script src="js.index.js"></script>
+
+<!-- JAVASCRIPT =============================-->
+<script src="{{url('assets/js/jquery.js')}}"></script>
+<script src="{{url('assets/js/bootstrap.min.js')}}"></script>
+<script src="{{url('assets/js/vendors/flexslider/flexslider.js')}}"></script>
+<script src="{{url('assets/js/vendors/slick/slick.min.js')}}"></script>
+<script src="{{url('assets/js/vendors/jquery.easing.min.js')}}"></script>
+<script src="{{url('assets/js/vendors/jquery.animateNumber.js')}}"></script>
+<script src="{{url('assets/js/vendors/jquery.appear.js')}}"></script>
+<script src="{{url('assets/js/vendors/jquery.inview.js')}}"></script>
+<script src="{{url('assets/js/vendors/jquery.placeholder.js')}}"></script>
+<script src="{{url('assets/js/vendors/jquery.prettyphoto.js')}}"></script>
+<script src="{{url('assets/js/vendors/isotope/isotope.pkgd.js')}}"></script>
+<script src="{{url('assets/js/vendors/stellar.js')}}"></script>
+<script src="{{url('assets/js/vendors/jquery.countdown.min.js')}}"></script>
+<script src="{{url('assets/js/main.js')}}"></script>
+<script src="{{url('assets/js/vendors/contact.js')}}"></script>
+<script src="{{url('assets/js/vendors/mc/jquery.ketchup.all.min.js')}}"></script>
+<script src="{{url('assets/js/vendors/mc/main.js')}}'"></script>
 
 </body>
 </html>
