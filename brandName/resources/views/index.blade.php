@@ -584,8 +584,12 @@
 			</div>
 		</div>
 	</div>
+
 	@include('commun.footer')
 
+
 </div>
+
+
 
 

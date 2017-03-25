@@ -19,6 +19,8 @@
                     <li><a class="page-scroll" href="#team">Team</a></li>
                     <li><a class="page-scroll" href="#pricing">Pricing</a></li>
                     <li><a class="page-scroll" href=".contact">Cuntact</a></li>
+                    <li><a class="page-scroll" href="{{url('/signup')}}"><i class="fa fa-user" aria-hidden="true"></i> Login|Signup</a></li>
+
                 </ul>
             </div>
         </div>

@@ -15,4 +15,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/signup','UserController@userSignup');
+
+
+Route::get('signup',['uses'=>'usersMangeController@userindex']);
+
+Route::post('/signup', array('as'=>'signup','befor'=>'csrf','uses'=>'Authcontroller@usersignup'));
