@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +20,6 @@ Route::get('/', function () {
 Route::get('signup',['uses'=>'usersMangeController@userindex']);
 
 Route::post('/signup', array('as'=>'signup','befor'=>'csrf','uses'=>'Authcontroller@usersignup'));
+
+
+Route::post('/userLogin', array('as'=>'userLogin','uses'=>'Authcontroller@authenticate'));

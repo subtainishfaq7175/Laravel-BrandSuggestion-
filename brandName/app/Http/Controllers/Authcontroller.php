@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\usersModel;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
@@ -33,5 +35,22 @@ class Authcontroller extends Controller
         $input['con-pwd'] = Hash::make($input['con-pwd']);
         usersModel::create($input);
         return Redirect::to('/signup')->with('message','You has been signup successfully!');
+    }
+
+    public function authenticate()
+    {
+        // create our user data for the authentication
+        $input = usersModel::all();
+
+        $userdata = array(
+            'email'     => Input::get('email'),
+            'pwd'  => Input::get('pwd')
+        );
+
+        if (Auth::attempt($userdata)){
+            echo 'SUCCESS!';
+        }
+        else echo "Error";
+
     }
 }

@@ -67,13 +67,13 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\usersModel::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+         'users' => [
+             'driver' => 'database',
+             'table' => 'buyers',
+         ],
     ],
 
     /*
@@ -90,6 +90,7 @@ return [
     | they have less time to be guessed. You may change this as needed.
     |
     */
+  
 
     'passwords' => [
         'users' => [

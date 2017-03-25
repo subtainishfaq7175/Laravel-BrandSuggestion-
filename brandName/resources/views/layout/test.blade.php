@@ -27,10 +27,17 @@
         <div class="row">
             <div class="col-md-6">
                 @if(Session::has('message'))
-                    <div class="alert alert-success"> {{Session::get('message')}} </div>
+                    <div class="alert alert-danger"> {{Session::get('message')}} </div>
                 @endif
                 <div class="panel panel-default">
-                    <div class="panel-heading"><h3 class="text-center">SignUp</h3></div>
+                    <div class="panel-heading">
+                        <form action="{{ url('/userLogin') }}" method="post">
+                            {{csrf_field()}}
+                            <input type="text" name="email" placeholder="User name" required>
+                            <input type="password" name="pwd" placeholder="Password" required>
+                            <input type="submit" name="submit" value="Login" class="btn btn-primary">
+                        </form>
+                    </div>
                     <div class="panel-body">
                         <form action="{{ url('/signup') }}" method="post">
                             {{csrf_field()}}
@@ -52,44 +59,15 @@
                             </div>
                             <div class="form-group">
 
-                                <input type="submit" name="submit" value="Submit" class="form-control btn btn-block btn-primary" required>
+                                <input type="submit" name="submit" value="Signup" class="form-control btn btn-block btn-primary">
                             </div>
 
 
                         </form>
                     </div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><h3 class="text-center">SignIn</h3></div>
-                    <div class="panel-body">
-                        <form action="{{ url('/signup') }}" method="post">
-                            {{csrf_field()}}
-                            <div class="form-group">
-                                <label for="Email">E-mail</label>
-                                <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" name="pwd" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="con-pwd">Confrom password</label>
-                                <input type="password" name="con-pwd" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-
-                                <input type="submit" name="submit" value="Submit" class="form-control btn btn-block btn-primary" required>
-                            </div>
-                        </form>
-                    </div>
-
                 </div>
             </div>
         </div>
-
     </div>
 
 
