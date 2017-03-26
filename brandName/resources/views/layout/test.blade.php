@@ -34,7 +34,7 @@
                         <form action="{{ url('/userLogin') }}" method="post">
                             {{csrf_field()}}
                             <input type="text" name="email" placeholder="User name" required>
-                            <input type="password" name="pwd" placeholder="Password" required>
+                            <input type="password" name="password" placeholder="Password" required>
                             <input type="submit" name="submit" value="Login" class="btn btn-primary">
                         </form>
                     </div>
@@ -51,7 +51,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" name="pwd" class="form-control" required>
+                                <input type="password" name="password" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="con-pwd">Confrom password</label>
