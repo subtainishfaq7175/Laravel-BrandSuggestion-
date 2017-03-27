@@ -26,13 +26,13 @@ class Authcontroller extends Controller
         $input = Input::get();
         $validation = Validator($input, $rules);
         if ($validation->fails()){
-            return Redirect::to('/signup')->withErrors($validation);
+            return Redirect::to('signup')->withErrors($validation);
         }
 
         $input['password'] = Hash::make($input['password']);
         $input['con-pwd'] = Hash::make($input['con-pwd']);
         usersModel::create($input);
-        return Redirect::to('/signup')->with('message','You has been signup successfully!');
+        return Redirect::to('signup')->with('message','You has been signup successfully!');
     }
 
     public function authenticate()
@@ -44,7 +44,7 @@ class Authcontroller extends Controller
         $input = Input::get();
         $validation = Validator($input, $rules);
         if ($validation->fails()){
-            return Redirect::to('/signup')->withErrors($validation);
+            return Redirect::to('signup')->withErrors($validation);
         }
 
         $userdata = array(
@@ -54,9 +54,9 @@ class Authcontroller extends Controller
 
 
         if (Auth::attempt(['email'=>Input::get('email'),'password'=>Input::get('password')])){
-            echo 'SUCCESS!';
+            return Redirect()->route('signup')->with('message','You has been signin successfully!');
         }
-        else echo "Error";
+        return Redirect::to('signup')->with('err','Login Error, Please try again!');
 
     }
 }

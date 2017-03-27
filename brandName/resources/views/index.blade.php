@@ -9,6 +9,18 @@
 	<div class="intro intro-style1">
 		<div class="overlay"></div>
 		<div class="container">
+			@if ($errors->any())
+				<div class="alert alert-danger">
+					<ul>
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>{{ implode('', $errors->all() ) }}
+					</ul>
+				</div>
+			@endif
+				@if (session('message'))
+					<div class="alert alert-success">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {{ session('message') }}
+					</div>
+				@endif
 			<div class="row center-content">
 				<div class="col-md-6 col-sm-8 col-sm-offset-2">
 					<h2>Dream & Create<br>Great landing pages.</h2>
@@ -586,6 +598,9 @@
 	</div>
 
 	@include('commun.footer')
+	@include('layout.user-login')
+	@include('layout.user-signup')
+	@include('layout.forget-password')
 
 
 </div>

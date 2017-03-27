@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 
 
-Route::get('signup',['uses'=>'usersMangeController@userindex']);
+Route::get('signup',['uses'=>'usersMangeController@index']);
 
 Route::post('/signup', array('as'=>'signup','befor'=>'csrf','uses'=>'Authcontroller@usersignup'));
 
