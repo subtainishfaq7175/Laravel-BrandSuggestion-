@@ -18,9 +18,12 @@
                     <li><a class="page-scroll" href="#features">Features</a></li>
                     <li><a class="page-scroll" href="#team">Team</a></li>
                     <li><a class="page-scroll" href="#pricing">Pricing</a></li>
-                    <li><a class="page-scroll" href=".contact">Cuntact</a></li>
+                    <li><a class="page-scroll" href=".contact">Contact</a></li>
                     <li>
-                        <a class="" href="javascript:;" data-toggle="modal" data-target="#loginModal"> Login</a>
+                        @if(Auth::check() )
+                            <a class="" href="javascript:;" data-toggle="modal" data-target="#logoutModal">{{Auth::user()->email}} </a>
+                        @else <a class="" href="javascript:;" data-toggle="modal" data-target="#loginModal"> Login</a>
+                        @endif
                     </li>
                 </ul>
             </div>

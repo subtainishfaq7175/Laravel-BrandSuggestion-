@@ -19,7 +19,13 @@ Route::get('/', function () {
 
 Route::get('signup',['uses'=>'usersMangeController@index']);
 
-Route::post('/signup', array('as'=>'signup','befor'=>'csrf','uses'=>'Authcontroller@usersignup'));
+Route::post('/signup', array('as'=>'signup' ,'befor'=>'csrf','uses'=>'Authcontroller@usersignup'));
+
 
 
 Route::post('/userLogin', array('as'=>'userLogin','uses'=>'Authcontroller@authenticate'));
+
+Route::get('/logout', array('as'=>'logout' ,'uses'=>'Authcontroller@userlogout'));
+
+Route::get('/redirect', 'SocialAuthController@redirect');
+Route::get('/callback', 'SocialAuthController@callback');

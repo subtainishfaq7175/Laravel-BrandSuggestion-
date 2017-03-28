@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class usersModel extends Model
 {
 
-    protected $table = 'users';
+    protected $table = 'buyers';
 
     protected $fillable = [
-        'name','email','pwd','con-pwd'
+        'name','email','password','con-pwd'
     ];
 }

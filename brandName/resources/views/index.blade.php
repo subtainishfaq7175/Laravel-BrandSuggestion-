@@ -16,6 +16,12 @@
 					</ul>
 				</div>
 			@endif
+				@if (session('err'))
+					<div class="alert alert-danger">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {{ session('err') }}
+					</div>
+				@endif
+
 				@if (session('message'))
 					<div class="alert alert-success">
 						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {{ session('message') }}
@@ -601,6 +607,7 @@
 	@include('layout.user-login')
 	@include('layout.user-signup')
 	@include('layout.forget-password')
+	@include('layout.logout')
 
 
 </div>

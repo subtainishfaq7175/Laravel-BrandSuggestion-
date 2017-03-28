@@ -21,6 +21,7 @@
                         </div>
                         <div class="form-group">
                             <input type="submit" name="submit" value="Signin" class="form-control btn btn-block btn-primary">
+                            <a href="redirect">FB Login</a>
                             <p class="pull-right">
                                 <a class="" href="javascript:;" data-toggle="modal" data-target="#forget-password">Forget password</a>
                             </p>

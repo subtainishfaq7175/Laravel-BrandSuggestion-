@@ -20,7 +20,7 @@ class Authcontroller extends Controller
             'email' => 'required | between:5,100 | email ',
             'password' => 'required | between:5,15',
             'name' => 'required',
-            'con-pwd' => 'required|same:pwd'
+            'con-pwd' => 'required|same:password'
         );
 
         $input = Input::get();
@@ -36,10 +36,11 @@ class Authcontroller extends Controller
     }
 
     public function authenticate()
-    { $rules = array(
-        'email' => 'required | between:5,100 | email ',
-        'password' => 'required | between:5,15'
-    );
+    {
+        $rules = array(
+            'email' => 'required | between:5,100 | email ',
+            'password' => 'required | between:5,15'
+        );
 
         $input = Input::get();
         $validation = Validator($input, $rules);
@@ -54,9 +55,16 @@ class Authcontroller extends Controller
 
 
         if (Auth::attempt(['email'=>Input::get('email'),'password'=>Input::get('password')])){
-            return Redirect()->route('signup')->with('message','You has been signin successfully!');
+            //Auth::login($userdata);
+            return Redirect()->route('signup')->with('message','You has been Login successfully!');
         }
         return Redirect::to('signup')->with('err','Login Error, Please try again!');
 
+    }
+
+    public function userlogout()
+    {
+        Auth::logout();
+        return Redirect::to('/signup');
     }
 }
