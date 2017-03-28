@@ -24,6 +24,7 @@
                             <a class="" href="javascript:;" data-toggle="modal" data-target="#logoutModal">{{Auth::user()->email}} </a>
                         @else <a class="" href="javascript:;" data-toggle="modal" data-target="#loginModal"> Login</a>
                         @endif
+
                     </li>
                 </ul>
             </div>

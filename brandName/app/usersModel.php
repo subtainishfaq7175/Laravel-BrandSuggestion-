@@ -10,6 +10,6 @@ class usersModel extends Model
     protected $table = 'buyers';
 
     protected $fillable = [
-        'name','email','password','con-pwd'
+        'name','email','password', 'con-pwd'
     ];
 }

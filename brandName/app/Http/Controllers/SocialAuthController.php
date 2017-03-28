@@ -1,21 +1,28 @@
 <?php
-
 namespace App\Http\Controllers;
-
+use App\usersModel;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use Socialite;
+use App\SocialAccountService;
+use Socialite; // socialite namespace
+use Auth;
 
 class SocialAuthController extends Controller
 {
-    public function redirect()
-    {
+    // redirect function
+    public function redirect(){
         return Socialite::driver('facebook')->redirect();
     }
-
-    public function callback()
-    {
+    // callback function
+    public function callback(SocialAccountService $service){
         // when facebook call us a with token
+        $user = $service->createOrGetUser(Socialite::driver('facebook')->user());
+
+
+      if( Auth::attempt(['email' => $user->email, 'password' => $user->name]) );
+        return redirect()->to('/')->with('message','You has been Login successfully!');
+
+         echo "Sorry";
+
     }
 }

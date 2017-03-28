@@ -1,5 +1,3 @@
-@extends('layout.master')
+<?php
 
-@section('title')
-    NameSquad
-@endsection
+        echo "SSs";

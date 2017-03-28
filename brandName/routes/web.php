@@ -23,6 +23,8 @@ Route::post('/signup', array('as'=>'signup' ,'befor'=>'csrf','uses'=>'Authcontro
 
 
 
+
+
 Route::post('/userLogin', array('as'=>'userLogin','uses'=>'Authcontroller@authenticate'));
 
 Route::get('/logout', array('as'=>'logout' ,'uses'=>'Authcontroller@userlogout'));

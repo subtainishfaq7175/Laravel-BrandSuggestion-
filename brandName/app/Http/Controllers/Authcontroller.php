@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Hash;
 
 class Authcontroller extends Controller
 {
+    public function usertest()
+    {
+        return view('welcome');
+    }
+
     public function usersignup(Request $request){
         $rules = array(
             'email' => 'required | between:5,100 | email ',
@@ -50,12 +55,12 @@ class Authcontroller extends Controller
 
         $userdata = array(
             'email'     => Input::get('email'),
-            'password'  => Input::get('pwd')
+            'password'  => Input::get('password')
         );
 
 
         if (Auth::attempt(['email'=>Input::get('email'),'password'=>Input::get('password')])){
-            //Auth::login($userdata);
+
             return Redirect()->route('signup')->with('message','You has been Login successfully!');
         }
         return Redirect::to('signup')->with('err','Login Error, Please try again!');
