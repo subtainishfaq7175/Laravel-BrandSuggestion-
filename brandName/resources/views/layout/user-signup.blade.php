@@ -27,6 +27,12 @@
                             <input type="password" name="con-pwd" class="form-control" required>
                         </div>
                         <div class="form-group">
+                            <h4>Select Account type</h4>
+                            <input name="accout" type="radio" value="1">Saller
+                            <input name="accout" type="radio" value="2">Buyer
+                        </div>
+
+                        <div class="form-group">
 
                             <input type="submit" name="submit" value="Signup" class="form-control btn btn-block btn-primary">
                         </div>

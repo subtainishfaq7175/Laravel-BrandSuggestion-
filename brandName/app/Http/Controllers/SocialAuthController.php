@@ -18,11 +18,7 @@ class SocialAuthController extends Controller
         // when facebook call us a with token
         $user = $service->createOrGetUser(Socialite::driver('facebook')->user());
 
-
-      if( Auth::attempt(['email' => $user->email, 'password' => $user->name]) );
         return redirect()->to('/')->with('message','You has been Login successfully!');
-
-         echo "Sorry";
 
     }
 }

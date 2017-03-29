@@ -72,7 +72,7 @@ return [
 
          'users' => [
              'driver' => 'database',
-             'table' => 'buyers',
+             'table' => 'site_users',
          ],
     ],
 

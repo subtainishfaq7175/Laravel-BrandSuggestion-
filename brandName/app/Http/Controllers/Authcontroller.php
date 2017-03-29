@@ -25,15 +25,19 @@ class Authcontroller extends Controller
             'email' => 'required | between:5,100 | email ',
             'password' => 'required | between:5,15',
             'name' => 'required',
-            'con-pwd' => 'required|same:password'
+            'con-pwd' => 'required|same:password',
+            'accout' => 'required'
         );
 
+
         $input = Input::get();
+
         $validation = Validator($input, $rules);
         if ($validation->fails()){
             return Redirect::to('signup')->withErrors($validation);
         }
 
+        //$input['Accout-type'];
         $input['password'] = Hash::make($input['password']);
         $input['con-pwd'] = Hash::make($input['con-pwd']);
         usersModel::create($input);
@@ -60,7 +64,8 @@ class Authcontroller extends Controller
 
 
         if (Auth::attempt(['email'=>Input::get('email'),'password'=>Input::get('password')])){
-
+            echo usersModel::all()->role;
+            return;
             return Redirect()->route('signup')->with('message','You has been Login successfully!');
         }
         return Redirect::to('signup')->with('err','Login Error, Please try again!');

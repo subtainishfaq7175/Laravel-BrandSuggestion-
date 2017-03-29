@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class usersModel extends Model
 {
 
-    protected $table = 'buyers';
+    protected $table = 'site_users';
 
     protected $fillable = [
-        'name','email','password', 'con-pwd'
+        'name','email','password', 'con-pwd','accout'
     ];
+
+
+    public $role = 0;
 }

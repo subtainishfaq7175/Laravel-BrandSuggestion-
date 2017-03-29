@@ -31,3 +31,14 @@ Route::get('/logout', array('as'=>'logout' ,'uses'=>'Authcontroller@userlogout')
 
 Route::get('/redirect', 'SocialAuthController@redirect');
 Route::get('/callback', 'SocialAuthController@callback');
+
+
+
+Route::group(['middleware' => 'auth'], function()
+{
+
+    Route::resource('products','ProductController');
+
+});
+
+
