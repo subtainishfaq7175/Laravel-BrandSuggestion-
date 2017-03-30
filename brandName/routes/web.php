@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+
 Route::get('/', function () {
     return view('index');
 });
@@ -34,11 +35,10 @@ Route::get('/callback', 'SocialAuthController@callback');
 
 
 
+
 Route::group(['middleware' => 'auth'], function()
 {
-
-    Route::resource('products','ProductController');
-
+        Route::resource('products','ProductController');
 });
 
 

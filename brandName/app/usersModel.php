@@ -13,6 +13,4 @@ class usersModel extends Model
         'name','email','password', 'con-pwd','accout'
     ];
 
-
-    public $role = 0;
 }

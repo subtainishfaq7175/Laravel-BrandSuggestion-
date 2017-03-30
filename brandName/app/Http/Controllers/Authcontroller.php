@@ -64,12 +64,17 @@ class Authcontroller extends Controller
 
 
         if (Auth::attempt(['email'=>Input::get('email'),'password'=>Input::get('password')])){
-            echo usersModel::all()->role;
-            return;
+            //return Auth::user()->accout;
             return Redirect()->route('signup')->with('message','You has been Login successfully!');
         }
         return Redirect::to('signup')->with('err','Login Error, Please try again!');
 
+    }
+    public function is_buyer()
+    {
+         if( Auth::user()->accout == 1)
+             return true;
+         return false;
     }
 
     public function userlogout()
