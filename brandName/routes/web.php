@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\User;
 
 
 Route::get('/', function () {
@@ -42,3 +43,12 @@ Route::group(['middleware' => 'auth'], function()
 });
 
 
+Route::get('users/{id}','usersMangeController@update');
+
+Route::Put('/users/{id}',['uses' => 'usersMangeController@update']);
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

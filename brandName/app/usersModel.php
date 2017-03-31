@@ -10,7 +10,7 @@ class usersModel extends Model
     protected $table = 'site_users';
 
     protected $fillable = [
-        'name','email','password', 'con-pwd','accout'
+        'name','email','password', 'con-pwd','accout','provider_user_id','provider'
     ];
 
 }

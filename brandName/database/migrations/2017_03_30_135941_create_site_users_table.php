@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBuyersTable extends Migration
+class CreateSiteUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,7 +19,9 @@ class CreateBuyersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('con-pwd');
-            $table->string('Accout-type');
+            $table->string('accout');
+            $table->string('provider_user_id');
+            $table->string('provider');
             $table->rememberToken();
             $table->timestamps();
         });
