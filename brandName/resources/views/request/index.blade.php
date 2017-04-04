@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Create Domain Request</div>
+                <div class="panel-heading">Add new domain request</div>
 
                 <div class="panel-body">
                     @if (session('message'))
@@ -20,7 +20,7 @@
                             </div>
                         @endif
 
-                    {!! Form::open(array('route'=>'domainRequest.store')) !!}
+                    {!! Form::open(array('route'=>'adDomainRequest')) !!}
                     <div class="form-group">
                         {!! Form::label('title','Title') !!}
                         {!! Form::text('title',null , ['class'=>'form-control','required']) !!}

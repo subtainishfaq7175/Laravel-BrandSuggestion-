@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->string('domain_name');
             $table->text('description');
             $table->text('rating');
+            $table->unsignedInteger('userid')->references('id')->on('site_users');
             $table->string('unitTime');
             $table->timestamps();
         });

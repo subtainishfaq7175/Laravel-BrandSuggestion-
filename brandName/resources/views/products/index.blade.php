@@ -36,6 +36,7 @@
                 </div>
             </div>
             {{link_to_route('products.create','Add new task',null, ['class'=>'btn btn-success'])}}
+             <button class="btn-black btn-primary pull-right" > {{ link_to_route('signup','Home') }} </button>
         </div>
     </div>
 </div>

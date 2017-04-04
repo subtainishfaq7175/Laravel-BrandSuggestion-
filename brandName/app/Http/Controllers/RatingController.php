@@ -13,7 +13,7 @@ class RatingController extends Controller
 {
      public function __construct()
     {
-        $this->middleware('auth:saller');
+        $this->middleware('auth');
     }
     
     public function doRating()
@@ -37,7 +37,7 @@ class RatingController extends Controller
 
     public function index()
     {
-        if ( Auth::user()->accout == 1)
+        if ( Auth::user()->accout == 2)
             return view('request.index');
 
         return view('index');
@@ -45,7 +45,7 @@ class RatingController extends Controller
 
     public function store(Request $request)
     {
-        if ( Auth::user()->accout == 1) {
+        if ( Auth::user()->accout == 2) {
             $rules = array(
                 'title' => 'required',
                 'description' => 'required|min:30',
@@ -61,8 +61,17 @@ class RatingController extends Controller
             // return $product;
 
             Rating::create($domainRequest);
-            return redirect()->back()->with('message', 'Item has been created successfully!');
+            return redirect()->back()->with('message', 'Request has been created successfully!');
         }
+        return view('index');
+    }
+
+    public function show()
+    {
+
+        $requests = Rating::all();
+        if ( Auth::user()->accout == 1)
+        return view('request.list_product',compact('requests'));
         return view('index');
     }
 

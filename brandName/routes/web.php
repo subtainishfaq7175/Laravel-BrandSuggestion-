@@ -32,17 +32,29 @@ use App\User;
 Route::get('/', function () {
     return view('index');
 });
-Route::get('signup',['uses'=>'usersMangeController@index']);
+Route::get('signup',['uses'=>'usersMangeController@index'])->name('signup');
 Route::post('/signup', array('as'=>'signup' ,'befor'=>'csrf','uses'=>'Authcontroller@usersignup'));
 Route::post('/userLogin', array('as'=>'userLogin','uses'=>'Authcontroller@authenticate'));
 Route::get('/logout', array('as'=>'logout' ,'uses'=>'Authcontroller@userlogout'));
+
 Route::get('/redirect', 'SocialAuthController@redirect');
 Route::get('/callback', 'SocialAuthController@callback');
+
 Route::group(['middleware' => 'auth'], function()
 {
         Route::resource('products','ProductController');
 });
+// domain request controller
+Route::get('domainRequest','RatingController@index');
+Route::post('adDomainRequest','RatingController@store')->name('adDomainRequest');
+
+    Route::get('products_list','RatingController@show')->name('products_list');
+
+
 Route::get('users/{id}','usersMangeController@update');
 Route::Put('/users/{id}',['uses' => 'usersMangeController@update']);
+
+
+
 Auth::routes();
-Route::get('/home', 'HomeController@index');
+Route::get('home', 'HomeController@index');

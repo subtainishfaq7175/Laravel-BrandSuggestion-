@@ -21,21 +21,25 @@
                     <li><a class="page-scroll" href=".contact">Contact</a></li>
                     <li>
                         @if(Auth::check() )
-                            <li class="dropdown">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                {{ Auth::user()->email }} <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                @if(Auth::user()->accout == 1)
-                                    <li><a href="{{url('products')}}">Add Domain</a></li>
-                                    <li><a href="{{url('domainRequest')}}">Domain Request</a></li>
-                                    <li role="separator" class="divider"></li>
-                                @endif
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    {{ Auth::user()->email }} <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    @if(Auth::user()->accout == 2)
+                                        <li><a href="{{url('domainRequest')}}">Domain Request</a></li>
+                                        @endif
 
-                                <li><a href="{{ route('logout') }}">Logout</a></li>
-                            </ul>
-                        </li>
+                                    @if(Auth::user()->accout == 1)
+                                        <li><a href="{{url('products')}}">Add Domain</a></li>
+                                        <li><a href="{{ url('products_list')  }}">New Request List</a>  </li>
+                                        <li role="separator" class="divider"></li>
+                                    @endif
+
+                                    <li><a href="{{ route('logout') }}">Logout</a></li>
+                                </ul>
                             </li>
+                        </li>
                         @else <a class="" href="javascript:;" data-toggle="modal" data-target="#loginModal"> Login</a>
                         @endif
 
