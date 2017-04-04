@@ -20,8 +20,6 @@ class CreateSiteUsersTable extends Migration
             $table->string('password');
             $table->string('con-pwd');
             $table->string('accout');
-            $table->string('provider_user_id');
-            $table->string('provider');
             $table->rememberToken();
             $table->timestamps();
         });

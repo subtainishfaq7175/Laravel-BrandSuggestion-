@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBuyersTable extends Migration
+class CreateDomainRequestTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateBuyersTable extends Migration
      */
     public function up()
     {
-        Schema::create('buyers', function (Blueprint $table) {
+        Schema::create('domain_request', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('con-pwd');
-            $table->rememberToken();
+            $table->string('title');
+            $table->longText('description');
+            $table->string('remarks');
+            $table->unsignedInteger('userid')->references('id')->on('site_users');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateBuyersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('buyers');
+        Schema::dropIfExists('domain_request');
     }
 }

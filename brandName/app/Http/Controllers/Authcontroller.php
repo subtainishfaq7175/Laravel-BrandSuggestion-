@@ -70,12 +70,7 @@ class Authcontroller extends Controller
         return Redirect::to('signup')->with('err','Login Error, Please try again!');
 
     }
-    public function is_buyer()
-    {
-         if( Auth::user()->accout == 1)
-             return true;
-         return false;
-    }
+
 
     public function userlogout()
     {
