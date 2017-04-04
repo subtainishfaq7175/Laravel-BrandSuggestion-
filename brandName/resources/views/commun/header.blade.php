@@ -27,7 +27,8 @@
                                 {{ Auth::user()->email }} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 @if(Auth::user()->accout == 1)
-                                    <li><a href="{{url('products')}}">Add Product</a></li>
+                                    <li><a href="{{url('products')}}">Add Domain</a></li>
+                                    <li><a href="{{url('domainRequest')}}">Domain Request</a></li>
                                     <li role="separator" class="divider"></li>
                                 @endif
 

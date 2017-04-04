@@ -13,4 +13,9 @@ class usersModel extends Model
         'name','email','password', 'con-pwd','accout','provider_user_id','provider'
     ];
 
+    public function addProduct()
+    {
+        return $this->hasMany('Products','userid');
+    }
+
 }

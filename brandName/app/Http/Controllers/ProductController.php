@@ -8,6 +8,7 @@ use App\Products;
 use Illuminate\Http\Request;
 
 use Auth;
+use Illuminate\Support\Facades\Input;
 
 class ProductController extends Controller
 {
@@ -32,7 +33,26 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         if ( Auth::user()->accout == 1) {
-            Products::create($request->all());
+            $rules = array(
+                'name' => 'required',
+                'heading' => 'required',
+                'subheading' => 'required',
+                'price' => 'required',
+                'domain_name' => 'required',
+                'description' => 'required',
+                'rating' => 'required',
+                'unitTime' => 'required'
+            );
+
+            $product = Input::get();
+            $validation = Validator($product, $rules);
+            if ($validation->fails()){
+                return Redirect::to('products/create')->withErrors($validation);
+            }
+            $product['userid'] = Auth::user()->id;
+           // return $product;
+
+            Products::create($product);
             return redirect()->route('products.index')->with('message', 'Item has been created successfully!');
         }
         return view('index');
