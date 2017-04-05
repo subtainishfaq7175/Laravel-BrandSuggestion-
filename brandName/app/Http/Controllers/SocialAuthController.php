@@ -13,14 +13,14 @@ class SocialAuthController extends Controller
 {
     // redirect function
     public function redirect(){
-        return Socialite::driver('google')->redirect();
+        return Socialite::driver('facebook')->redirect();
     }
     // callback function
     public function callback(SocialAccountService $service){
         // when facebook call us a with token
 
         try{
-            $socialUser = Socialite::driver('google')->stateless()->user();
+            $socialUser = Socialite::driver('facebook')->stateless()->user();
         }catch (Exception $e){
             $this->redirect('/');
         }

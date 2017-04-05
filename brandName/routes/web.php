@@ -48,7 +48,13 @@ Route::group(['middleware' => 'auth'], function()
 Route::get('domainRequest','RatingController@index');
 Route::post('adDomainRequest','RatingController@store')->name('adDomainRequest');
 
-    Route::get('products_list','RatingController@show')->name('products_list');
+//Request controller
+Route::group(['middleware' => 'auth'], function()
+{
+    Route::resource('request','RatingController');
+});
+
+    Route::get('products_list','RatingController@products_list')->name('products_list');
 
 
 Route::get('users/{id}','usersMangeController@update');

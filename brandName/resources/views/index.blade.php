@@ -29,7 +29,7 @@
 				@endif
 			<div class="row center-content">
 				<div class="col-md-6 col-sm-8 col-sm-offset-2">
-					<h2>Dream & Create<br>Great landing pages.</h2>
+					<h2>What is NAMESQUAD?</h2>
 					<p>Lorem ipsum dolor sit amet dictum ante tempor eget faucibus et urna eu maecenas viverra aliquam lorem id tincidunt praesent et viverra massa non varius magna eget nibh vitae velit posuere efficitur.</p>
 					<a href="#" class="btn btn-primary btn-lg">Learn More</a>
 					<a href="#" class="btn btn-default btn-border btn-lg">Take Tour</a>
@@ -45,7 +45,7 @@
 	<section class="services" id="services">
 		<div class="container">
 			<div class="section-head text-center col-md-8 col-md-offset-2 space60">
-				<h1>Welcome to Helium</h1>
+				<h1>What is NAMESQUAD?</h1>
 				<p>Lorem ipsum dolor sit amet consectetur adipiscing elit viverra aliquam lorem id tincidunt. Praesent et viverra massa non varius magna eget nibh vitae velit posuere efficitur.</p>
 			</div>
 
@@ -169,7 +169,7 @@
 	<div class="accordion-wrap">
 		<div class="container">
 			<div class="section-head text-center col-md-8 col-md-offset-2 space40">
-				<h1>Whats helium special</h1>
+				<h2>Get your Name in just 4 steps</h2>
 				<p>Lorem ipsum dolor sit amet consectetur adipiscing elit viverra aliquam lorem id tincidunt. Praesent et viverra massa non varius magna eget nibh vitae velit posuere efficitur.</p>
 			</div>
 			<div class="row">

@@ -2,7 +2,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="./index.html">Helium</a>
+                <a class="navbar-brand" href="/">Name Squad</a>
             </div>
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
@@ -27,7 +27,7 @@
                                     {{ Auth::user()->email }} <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     @if(Auth::user()->accout == 2)
-                                        <li><a href="{{url('domainRequest')}}">Domain Request</a></li>
+                                        <li><a href="{{url('request')}}">Domain Request</a></li>
                                         @endif
 
                                     @if(Auth::user()->accout == 1)
