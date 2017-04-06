@@ -27,7 +27,7 @@ class ProductController extends Controller
     {
         if ( Auth::user()->accout == 1)
             return view('products.create');
-        return view('index');
+
     }
 
     public function store(Request $request)

@@ -54,11 +54,15 @@ Route::group(['middleware' => 'auth'], function()
     Route::resource('request','RatingController');
 });
 
-    Route::get('products_list','RatingController@products_list')->name('products_list');
-
+Route::get('products_list','RatingController@products_list')->name('products_list');
+Route::get('doResponse/{id}','responseController@index')->name('doResponse');
+//response
+Route::post('respond','responseController@store')->name('respond');
 
 Route::get('users/{id}','usersMangeController@update');
 Route::Put('/users/{id}',['uses' => 'usersMangeController@update']);
+
+
 
 
 

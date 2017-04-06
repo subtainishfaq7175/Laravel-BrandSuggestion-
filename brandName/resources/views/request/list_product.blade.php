@@ -15,6 +15,7 @@
                         <tr> <td>Request description</td> <td>{{$request->description}} </td> </tr>
                         <tr> <td>Request remark</td> <td>{{$request->remarks}} </td> </tr>
                         <tr> <td>Add by user </td> <td>{{$request->userid}} </td> </tr>
+                        <tr> <td></td> <td>{{link_to_route('doResponse','Respond',[$request->id], ['class'=>'btn btn-info pull-right'])}} </td> </tr>
 
                     </table>
                         <p style="border-bottom: 3px solid; "></p>
