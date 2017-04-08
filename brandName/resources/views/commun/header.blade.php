@@ -28,6 +28,7 @@
                                 <ul class="dropdown-menu">
                                     @if(Auth::user()->accout == 2)
                                         <li><a href="{{url('request')}}">Domain Request</a></li>
+
                                         @endif
 
                                     @if(Auth::user()->accout == 1)

@@ -25,8 +25,8 @@
                                     {{link_to_route('request.edit','Edit',[$request->id], ['class'=>'btn btn-primary'])}}
 
                                     |
-                                    {!! Form::button('Delete',['class'=>'btn btn-danger','type'=>'submit']) !!}
-
+                                    {!! Form::button('Delete',['class'=>'btn btn-danger','type'=>'submit']) !!} |
+                                    {{link_to_route('showResponse','Show response',[$request->id], ['class'=>'btn btn-primary'])}}
                                     {!! Form::close() !!}
                                 </td>
                             </tr>

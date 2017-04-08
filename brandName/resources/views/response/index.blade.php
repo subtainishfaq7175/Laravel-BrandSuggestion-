@@ -19,7 +19,7 @@
                                 @foreach ($products as $pro )
                                     <select class="selectpicker" name="selectpicker">
                                         <option></option>
-                                        <option>{{$pro->name}}</option>
+                                        <option value="{{$pro->id}}">{{$pro->name}}</option>
                                     </select>
                                 @endforeach
                             </td>

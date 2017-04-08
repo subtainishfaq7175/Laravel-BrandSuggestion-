@@ -1,8 +1,6 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-
 class CreateRatingsTable extends Migration
 {
     /**
@@ -18,10 +16,9 @@ class CreateRatingsTable extends Migration
             $table->unsignedInteger('user_id')->index();
             $table->index('rateable_id');
             $table->index('rateable_type');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('site_users');
         });
     }
-
     /**
      * Reverse the migrations.
      */

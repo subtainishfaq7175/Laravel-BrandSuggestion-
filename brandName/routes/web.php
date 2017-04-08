@@ -59,11 +59,15 @@ Route::get('doResponse/{id}','responseController@index')->name('doResponse');
 //response
 Route::post('respond','responseController@store')->name('respond');
 
+//Show response
+Route::get('showResponse/{reid}','responseController@show')->name('showResponse');
+
 Route::get('users/{id}','usersMangeController@update');
 Route::Put('/users/{id}',['uses' => 'usersMangeController@update']);
 
+// getting Rating
 
-
+Route::post('ratting','RatingController@doRating')->name('doRating');
 
 
 Auth::routes();

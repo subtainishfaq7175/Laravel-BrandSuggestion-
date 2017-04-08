@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Products;
 use App\Rating;
+
+
 use willvincent\Rateable\Rateable;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 
 class RatingController extends Controller
 {
@@ -15,13 +18,16 @@ class RatingController extends Controller
     {
         $product = Products::first();
 
+        $ratings = Input::get();
+
         $rating = new \willvincent\Rateable\Rating;
-        $rating->rating = 5;
-        $rating->user_id = 1;
+        $rating->rating = $ratings['rate'];
+        $rating->user_id = Auth::user()->id;
 
         $product->ratings()->save($rating);
 
-        dd(Products::first()->ratings);
+        //dd(Products::first()->ratings);
+        return Redirect()->back()->with('message','Thanks for ratting');
     }
 
     public function getRating()
@@ -32,8 +38,11 @@ class RatingController extends Controller
 
     public function index()
     {
-        $requests = Rating::all();
+        $requests = DB::table('domain_request')
+            ->where('userid', Auth::user()->id)->get();
+
         if ( Auth::user()->accout == 2)
+
             return view('request.index',compact('requests'));
 
         return view('index');
