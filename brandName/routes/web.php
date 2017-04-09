@@ -56,6 +56,7 @@ Route::group(['middleware' => 'auth'], function()
 
 Route::get('products_list','RatingController@products_list')->name('products_list');
 Route::get('doResponse/{id}','responseController@index')->name('doResponse');
+Route::get('Response/{id}','responseController@showResponse')->name('Response');
 //response
 Route::post('respond','responseController@store')->name('respond');
 

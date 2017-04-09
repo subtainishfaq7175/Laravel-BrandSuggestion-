@@ -114,10 +114,16 @@ class RatingController extends Controller
 
     public function products_list()
     {
-
+        /*$requests = DB::table('response')
+            ->where('sallerid', Auth::user()->id)->get();
+        return $requests;*/
         $requests = Rating::all();
-        if ( Auth::user()->accout == 1)
-        return view('request.list_product',compact('requests'));
+        if ( Auth::user()->accout == 1){
+
+            $sallers = DB::table('response')
+                ->where('sallerid', Auth::user()->id)->get();
+            return view('request.list_product',compact('requests','sallers'));
+        }
         return view('index');
     }
 

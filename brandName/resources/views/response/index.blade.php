@@ -1,5 +1,5 @@
 @extends('layout.master')
-
+@include('commun.header')
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -16,12 +16,12 @@
                         <th>Action</th>
                         {!! Form::open(array('route'=>'respond')) !!}
                         <tr><td>Select domian to respond
-                                @foreach ($products as $pro )
-                                    <select class="selectpicker" name="selectpicker">
-                                        <option></option>
+                                <select class="selectpicker" name="selectpicker">
+                                    <option></option>
+                                    @foreach ($products as $pro )
                                         <option value="{{$pro->id}}">{{$pro->name}}</option>
-                                    </select>
-                                @endforeach
+                                    @endforeach
+                                </select>
                             </td>
                             <input type="hidden" name="id" value="{{$id}}">
                             <td>{!! Form::button('Submit',['type'=>'submit', 'class'=>'btn btn-primary']) !!}
@@ -35,3 +35,4 @@
         </div>
     </div>
 </div>
+@include('commun.footer')

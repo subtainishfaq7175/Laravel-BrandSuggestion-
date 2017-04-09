@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Rating;
 use Illuminate\Http\Request;
 use Auth;
 use App\Response;
@@ -13,10 +14,13 @@ class responseController extends Controller
 
     public function index($id)
     {
+
         If(Auth::user()->accout == 1 )
         {
+
+            // not responded view
            $products = DB::table('products')
-                ->where('userid', Auth::user()->id )->get() ;
+                ->where('userid', Auth::user()->id )->get();
             return  view('response.index', compact('products', 'id'));
         }
         return view('index');
@@ -39,7 +43,13 @@ class responseController extends Controller
         $reponse['rid'] = $reponse['id'];
 
        if( Response::create($reponse) )
-        return Redirect()->back()->with('message','Success');
+       {
+           //updating singlw colom of status in "domqin_request" table
+           Rating::where('id', $reponse['id'])->update(array('status' => 1 ));
+           return Redirect()->back()->with('message','Success');
+       }
+
+
         return Redirect()->back()->withErrors();
     }
 
@@ -47,13 +57,14 @@ class responseController extends Controller
     {
         if ( Auth::user()->accout == 2)
         {
-            // getting saller id from response table
+
+            // getting saller id from response table  if responed other wise error
             $saller = DB::table('response')
                 ->where('rid',$reid)->get();
            if($saller)
            {
                foreach ($saller as $sale)
-                   //geting saller saller form site_users table
+                   //geting saller form site_users table
                $sallerid = $sale->sallerid;
                $saller = DB::table('site_users')
                    ->where('id',$sallerid)->get();
@@ -65,5 +76,12 @@ class responseController extends Controller
            } else
                 return Redirect()->back();
         }
+    }
+
+
+    public function showResponse($rqid)
+    {
+
+        echo "Welcome";
     }
 }
