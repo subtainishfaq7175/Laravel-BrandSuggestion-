@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Authcontroller;
 use App\Products;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 use Auth;
 use Illuminate\Support\Facades\Input;
 
@@ -15,7 +15,9 @@ class ProductController extends Controller
     public function index()
     {
 
-        $products = Products::all();
+       // $products = Products::all();
+        $products = DB::table('products')
+            ->where('userid', Auth::user()->id)->get();
 
             if ( Auth::user()->accout == 1)
             return view('products.index',compact('products'));

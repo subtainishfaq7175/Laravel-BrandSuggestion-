@@ -6,6 +6,7 @@ use App\Products;
 use App\Rating;
 
 
+use App\Response;
 use willvincent\Rateable\Rateable;
 use Illuminate\Http\Request;
 use Auth;
@@ -114,15 +115,28 @@ class RatingController extends Controller
 
     public function products_list()
     {
-        /*$requests = DB::table('response')
-            ->where('sallerid', Auth::user()->id)->get();
-        return $requests;*/
-        $requests = Rating::all();
-        if ( Auth::user()->accout == 1){
 
-            $sallers = DB::table('response')
-                ->where('sallerid', Auth::user()->id)->get();
-            return view('request.list_product',compact('requests','sallers'));
+       if ( Auth::user()->accout == 1){
+           $requests = Rating::all();
+           $responedRequest=array();
+           $newRequest=array();
+           foreach ($requests as $request)
+           {
+               $response = DB::table('response')
+                   ->where([
+                       ['rid', '=', $request->id],
+                       ['sallerid', '=', Auth::user()->id],
+                   ])->get();
+               if(count($response)>0)
+               {
+                   array_push($responedRequest,$request);
+               }else{
+                   array_push($newRequest,$request);
+               }
+           }
+           //return $newRequest;
+            //$sallers =Response::all();
+            return view('request.list_product',compact('responedRequest','newRequest'));
         }
         return view('index');
     }

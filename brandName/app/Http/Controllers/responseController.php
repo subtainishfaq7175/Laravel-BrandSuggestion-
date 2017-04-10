@@ -61,18 +61,28 @@ class responseController extends Controller
             // getting saller id from response table  if responed other wise error
             $saller = DB::table('response')
                 ->where('rid',$reid)->get();
-           if($saller)
+            if(count($saller)>0)
            {
+               $respondSaller=array();
+               $respondedProduct=array();
+               //$respondedcomplete=array();
                foreach ($saller as $sale)
-                   //geting saller form site_users table
-               $sallerid = $sale->sallerid;
-               $saller = DB::table('site_users')
-                   ->where('id',$sallerid)->get();
-               //getting product from products table against upper got saller id
-               $products = DB::table('products')
-                   ->where('userid',$sallerid)->get();
-               //passing
-                return view('rating.index',compact('products', 'saller'));
+               {
+                   // getting saller who are respond to request
+                  /* $saller = DB::table('site_users')
+                       ->where('id',$sale->sallerid)->get();
+                   array_push($respondSaller,$saller );*/
+
+                   //getting products that are going to display , that are responded by saller on request
+                   $products = DB::table('products')
+                       ->where('id',$sale->productid)->get();
+                   array_push($respondedProduct,$products );
+                   // getting complete..
+                  // array_push($respondedcomplete,$products,$respondSaller );
+               }
+                //return $respondedProduct;
+
+               return view('rating.index',compact( 'respondedProduct'));
            } else
                 return Redirect()->back();
         }
