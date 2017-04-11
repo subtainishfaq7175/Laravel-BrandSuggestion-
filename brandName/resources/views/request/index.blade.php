@@ -1,5 +1,5 @@
 @extends('layout.master')
-@include('commun.header')
+@include('commun.buyerHeader')
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -36,7 +36,7 @@
                 </div>
             </div>
             {{link_to_route('request.create','Add new request',null, ['class'=>'btn btn-success'])}}
-            <button class="btn-black btn-primary pull-right" > {{ link_to_route('signup','Home') }} </button>
+
         </div>
     </div>
 </div>

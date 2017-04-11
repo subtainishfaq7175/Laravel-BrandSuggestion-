@@ -1,4 +1,5 @@
 @extends('layout.master')
+@extends('commun.buyerHeader')
 
 <div class="container">
     <div class="row">
@@ -40,8 +41,6 @@
                     </div>
                     {!! Form::button('Create',['type'=>'submit', 'class'=>'btn btn-primary']) !!}
                     {!! Form::close() !!}
-                    <button class="btn-black btn-primary" > {{ link_to_route('signup','Home') }} </button>
-                    <button class="btn-primary pull-right">List Request</button>
                 </div>
             </div>
 

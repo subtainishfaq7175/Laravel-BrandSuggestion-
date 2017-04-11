@@ -23,25 +23,36 @@
 				@endif
 
 				@if (session('message'))
-					<div class="alert alert-success">
+
+					<div class="alert alert-success" id="success-alert">
 						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {{ session('message') }}
 					</div>
 				@endif
 			<div class="row center-content">
 				<div class="col-md-6 col-sm-8 col-sm-offset-2">
 					<h2>What is NAMESQUAD?</h2>
-					<p>Lorem ipsum dolor sit amet dictum ante tempor eget faucibus et urna eu maecenas viverra aliquam lorem id tincidunt praesent et viverra massa non varius magna eget nibh vitae velit posuere efficitur.</p>
-					<a href="#" class="btn btn-primary btn-lg">Learn More</a>
-					<a href="#" class="btn btn-default btn-border btn-lg">Take Tour</a>
+					<p>Get your name in just 4 steps</p>
+					@if(Auth::check() )
+						@if(Auth::user()->accout == 2)
+							{{link_to_route('request.create','Add new request',null, ['class'=>'btn btn-success btn-large'])}}
+						@endif
+					@endif
+
+					@if(Auth::check() )
+						@if(Auth::user()->accout == 1)
+							{{link_to_route('products.create','Add new request',null, ['class'=>'btn btn-success btn-large'])}}
+						@endif
+					@endif
+					<a href="#" disabled class="btn btn-default btn-border btn-lg">Take Tour</a>
 				</div>
 				<div class="col-md-5 col-md-push-1">
-					<img src="{{url('assets/images/1.png')}}" class="img-responsive" alt=""/>
+					<img src="{{url('assets/images/1.png')}}" class="img-responsive" alt="Item pic may be.."/>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- SERVICES -->
+{{--	<!-- SERVICES -->
 	<section class="services" id="services">
 		<div class="container">
 			<div class="section-head text-center col-md-8 col-md-offset-2 space60">
@@ -601,7 +612,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>--}}
 
 	@include('commun.footer')
 	@include('layout.user-login')

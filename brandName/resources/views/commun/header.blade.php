@@ -12,13 +12,13 @@
             </button>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="page-scroll" href="#page-top">Home</a></li>
-                    <li><a class="page-scroll" href="#services">Services</a></li>
-                    <li><a class="page-scroll" href="#testimonial">Testimonial</a></li>
-                    <li><a class="page-scroll" href="#features">Features</a></li>
-                    <li><a class="page-scroll" href="#team">Team</a></li>
-                    <li><a class="page-scroll" href="#pricing">Pricing</a></li>
-                    <li><a class="page-scroll" href=".contact">Contact</a></li>
+                    <li><a class="page-scroll" href="/">Home</a></li>
+                    <li><a class="page-scroll" href="#">Services</a></li>
+                    <li><a class="page-scroll" href="#">Testimonial</a></li>
+                    <li><a class="page-scroll" href="#">Features</a></li>
+                    <li><a class="page-scroll" href="#">Team</a></li>
+                    <li><a class="page-scroll" href="#">Pricing</a></li>
+                    <li><a class="page-scroll" href=".">Contact</a></li>
                     <li>
                         @if(Auth::check() )
                         <li class="dropdown">
@@ -27,13 +27,12 @@
                                     {{ Auth::user()->email }} <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     @if(Auth::user()->accout == 2)
-                                        <li><a href="{{url('request')}}">Domain Request</a></li>
+                                        <li><a href="{{url('request')}}">Dashboard</a></li>
 
                                         @endif
 
                                     @if(Auth::user()->accout == 1)
-                                        <li><a href="{{url('products')}}">Add Domain</a></li>
-                                        <li><a href="{{ url('products_list')  }}">New Request List</a>  </li>
+                                        <li><a href="{{url('products')}}">Dashboard</a></li>
                                         <li role="separator" class="divider"></li>
                                     @endif
 

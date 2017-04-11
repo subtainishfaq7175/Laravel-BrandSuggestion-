@@ -1,3 +1,5 @@
+@extends('layout.master')
+@include('commun.header')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -169,5 +171,7 @@
         }
     };
 </script>
+
+@include('commun.footer')
 </body>
 </html>

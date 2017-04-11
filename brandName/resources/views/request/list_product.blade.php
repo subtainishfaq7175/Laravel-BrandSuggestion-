@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@include('commun.header')
+@include('commun.sallerHeader')
 
                 <div class="container">
                     <div class="row">

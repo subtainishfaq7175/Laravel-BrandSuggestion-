@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center">
-                <a class="navbar-brand" href="./index.html">Helium</a>
+                <a class="navbar-brand" href="/">NAMESQUAD</a>
                 <ul class="list-inline social-icons icon-circle space20">
                     <li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
                     <li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
@@ -18,7 +18,7 @@
                     <li><a href="#">Policy</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
-                <p class="copy">Copyright &copy; 2016 Helium. jThemes Studio. All Rights Reserved</p>
+                <p class="copy">Copyright &copy; 2016 NAMESQUAD All Rights Reserved</p>
             </div>
         </div>
     </div>

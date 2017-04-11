@@ -1,5 +1,5 @@
 @extends('layout.master')
-
+@extends('commun.buyerHeader')
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -18,8 +18,6 @@
 
 
                     </table>
-                    <td> <button class="btn-black btn-primary pull-right" > {{ link_to_route('request.index','Home') }} </button> </td>
-
                 </div>
             </div>
 
