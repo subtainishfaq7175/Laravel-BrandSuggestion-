@@ -21,16 +21,16 @@ class PaymentController extends Controller
     {
         $user = usersModel::find(Auth::user()->id);
 
-        $input = $request->all();
+         $input = $request->all();
 
-        $stripeToken = $input['stripeToken'];
+         $stripeToken = $input['stripeToken'];
 
         try{
             $user->newSubscription('main', 'monthly')->create($stripeToken, [
                 'email' => $user->email,
             ]);
 
-           // Stripe::setApiKey($this->app['config']['services.stripe']['key']  );
+
             return back()->with('success','Subscription is completed.');
         }catch(Exception $e){
             return back()->with('success',$e->getMessage());

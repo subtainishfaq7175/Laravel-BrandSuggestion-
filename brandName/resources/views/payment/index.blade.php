@@ -118,7 +118,7 @@
                             <span class="payment-errors" style="color: red;margin-top:10px;"></span>
                         </div>
                     </div>
-                   {{-- <input type="hidden" name="stripeToken">--}}
+                    {{-- <input type="hidden" name="stripeToken">--}}
                     {!! Form::close() !!}
                 </div>
             </div>
@@ -141,7 +141,7 @@
 
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script>
-    Stripe.setPublishableKey("<?php echo env('STRIPE_SECRET') ?>");
+    Stripe.setPublishableKey("<?php echo env('STRIPE_KEY') ?>");
     jQuery(function($) {
         $('#payment-form').submit(function(event) {
             var $form = $(this);
