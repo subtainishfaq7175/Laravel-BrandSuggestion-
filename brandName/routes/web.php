@@ -73,3 +73,8 @@ Route::post('ratting','RatingController@doRating')->name('doRating');
 
 Auth::routes();
 Route::get('home', 'HomeController@index');
+
+
+// Payment
+Route::get('payments','PaymentController@index')->name('payments');
+Route::post('order-post','PaymentController@orderPost')->name('order-post');

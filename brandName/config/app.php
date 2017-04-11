@@ -170,6 +170,8 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
+        Laravel\Cashier\CashierServiceProvider::class,
+
         /*
          * Package Service Providers...
          */

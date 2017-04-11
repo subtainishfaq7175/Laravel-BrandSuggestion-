@@ -30,6 +30,8 @@
                                                 </select>
                                                 <input type="submit" value="Submit">
                                             </form></td>  </tr>
+
+                                    <tr><td></td> <td><a class="btn-success" href="{{route('payments')}}">Purchase</a></td></tr>
                                 <tr style="background-color: #00BCD4"><td></td> <td></td>  </tr>
 
                                 @endforeach

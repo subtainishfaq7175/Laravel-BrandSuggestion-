@@ -18,14 +18,12 @@ class CreateDomainRequestTable extends Migration
             $table->string('title');
             $table->longText('description');
             $table->string('remarks');
-
+            $table->integer('status');
             $table->unsignedInteger('userid')->references('id')->on('site_users');
             $table->timestamps();
         });
 
-        Schema::create('domain_request', function (Blueprint $table) {
-            $table->integer('status');
-        });
+
     }
 
     /**

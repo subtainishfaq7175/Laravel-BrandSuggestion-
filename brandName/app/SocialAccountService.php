@@ -14,7 +14,7 @@ class SocialAccountService
         } else {
             $account = new SocialAccount([
                 'provider_user_id' => $providerUser->getId(),
-                'provider' => 'google'
+                'provider' => 'facebook'
             ]);
             $user = usersModel::whereEmail($providerUser->getEmail())->first();
             if (!$user) {
