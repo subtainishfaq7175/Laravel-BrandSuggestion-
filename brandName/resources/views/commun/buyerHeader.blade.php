@@ -14,6 +14,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a class="page-scroll" href="/">Home</a></li>
                     <li><a class="page-scroll" href="{{url('request')}}">Requests</a></li>
+                    <li><a class="page-scroll" href="{{url('showAllPurchases')}}">All Purchases</a></li>
 
                     <li>
                     @if(Auth::check() )

@@ -1,21 +1,4 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @saimzishan
- Sign out
- Watch 1
-  Star 0
- Fork 0 subtainishfaqstudent/brandSuggestion Private
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs
-Branch: master Find file Copy pathbrandSuggestion/brandName/routes/web.php
-f7bf779  4 days ago
-@saimzishan saimzishan checking
-1 contributor
-RawBlameHistory     
-55 lines (30 sloc)  1.24 KB
+
 <?php
 use Illuminate\Support\Facades\Auth;
 /*
@@ -54,8 +37,16 @@ Route::group(['middleware' => 'auth'], function()
     Route::resource('request','RatingController');
 });
 
+//show all buyer purchased products
+Route::get('showAllPurchases','PurchasesController@showAllPurchases')->name('showAllPurchases');
+
 Route::get('products_list','RatingController@products_list')->name('products_list');
 Route::get('doResponse/{id}','responseController@index')->name('doResponse');
+
+//showing all sales
+Route::get('showAllSales','SalesController@showAllSales')->name('showAllSales');
+
+
 Route::get('Response/{id}','responseController@showResponse')->name('Response');
 //response
 Route::post('respond','responseController@store')->name('respond');
@@ -75,6 +66,6 @@ Auth::routes();
 Route::get('home', 'HomeController@index');
 
 
-// Payment
-Route::get('payments','PaymentController@index')->name('payments');
-Route::post('order-post','PaymentController@orderPost')->name('order-post');
+// Purchases
+Route::get('payments/{id}{proid}','PurchasesController@index')->name('payments');
+Route::post('order-post','PurchasesController@orderPost')->name('order-post');

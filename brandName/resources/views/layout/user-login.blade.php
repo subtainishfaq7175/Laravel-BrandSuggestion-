@@ -20,7 +20,8 @@
                             <input type="password" name="password" class="form-control" value="{{ old('email') }}" required>
                         </div>
                         <div class="form-group">
-                            <input type="submit" name="submit" value="Signin" class="form-control btn btn-block btn-primary">
+                            <input type="submit" name="submit" value="Signin" class="form-control btn btn-block btn-primary"
+                                   style="padding-top: 10px;">
                             {{--<a href="redirect">FB Login</a>
                             <p class="pull-right">
                                 <a class="" href="javascript:;" data-toggle="modal" data-target="#forget-password">Forget password</a>
@@ -30,7 +31,7 @@
             </div>
             <div class="modal-footer">
 
-                <button class="btn btn-primary btn-block"> <a class="" href="javascript:;" data-toggle="modal" data-target="#signupModal"> Signup</a></button>
+                <a class="" href="javascript:;" data-toggle="modal" data-target="#signupModal"><button class="btn btn-primary btn-block">  Signup</button></a>
             </div>
         </div>
 

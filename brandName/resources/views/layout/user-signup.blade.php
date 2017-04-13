@@ -33,7 +33,8 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="submit" name="submit" value="Signup" class="form-control btn btn-block btn-primary">
+                            <input type="submit" name="submit" value="Signup" class="form-control btn btn-block btn-primary"
+                                   style="padding-top: 10px;">
                         </div>
 
 

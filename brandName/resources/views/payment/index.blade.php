@@ -59,16 +59,26 @@
                         </div>
                     @endif
                     <div class="form-group" id="product-group">
-                        {!! Form::label('plane', 'Select Plan:') !!}
-                        {!! Form::select('plane', ['google' => 'Google ($10)', 'game' => 'Game ($20)', 'movie' => 'Movie ($15)'], 'Book', [
+                        {!! Form::label('Purchases', 'Purchases') !!}
+                        {!! Form::text('payment',$id, [
+                            'placeholder'                      => $id.' $' ,
+                            'value'                         => $id ,
                             'class'                       => 'form-control',
-                            'required'                    => 'required',
+                            'readonly'                       => 'readonly',
                             'data-parsley-class-handler'  => '#product-group'
                             ]) !!}
                     </div>
+                    <div class="form-group">
+                        {!! Form::hidden('product_id',$proid, [
+                               'value'                      => $proid ,
+                               'class'                       => 'form-control',
+                               'readonly'                       => 'readonly',
+                               'data-parsley-class-handler'  => '#product-group'
+                               ]) !!}
+                    </div>
                     <div class="form-group" id="cc-group">
                         {!! Form::label(null, 'Credit card number:') !!}
-                        {!! Form::text(null, null, [
+                        {!! Form::text('card_no', null, [
                             'class'                         => 'form-control',
                             'required'                      => 'required',
                             'data-stripe'                   => 'number',
@@ -80,7 +90,7 @@
                     </div>
                     <div class="form-group" id="ccv-group">
                         {!! Form::label(null, 'CVC (3 or 4 digit number):') !!}
-                        {!! Form::text(null, null, [
+                        {!! Form::text('card_cvc', null, [
                             'class'                         => 'form-control',
                             'required'                      => 'required',
                             'data-stripe'                   => 'cvc',
@@ -94,7 +104,7 @@
                         <div class="col-md-6">
                             <div class="form-group" id="exp-m-group">
                                 {!! Form::label(null, 'Ex. Month') !!}
-                                {!! Form::selectMonth(null, null, [
+                                {!! Form::selectMonth('card_Ex_mm', null, [
                                     'class'                 => 'form-control',
                                     'required'              => 'required',
                                     'data-stripe'           => 'exp-month'
@@ -104,7 +114,7 @@
                         <div class="col-md-6">
                             <div class="form-group" id="exp-y-group">
                                 {!! Form::label(null, 'Ex. Year') !!}
-                                {!! Form::selectYear(null, date('Y'), date('Y') + 10, null, [
+                                {!! Form::selectYear('card_Ex_yy', date('Y'), date('Y') + 10, null, [
                                     'class'             => 'form-control',
                                     'required'          => 'required',
                                     'data-stripe'       => 'exp-year'
@@ -120,7 +130,7 @@
                             <span class="payment-errors" style="color: red;margin-top:10px;"></span>
                         </div>
                     </div>
-                    {{-- <input type="hidden" name="stripeToken">--}}
+
                     {!! Form::close() !!}
                 </div>
             </div>

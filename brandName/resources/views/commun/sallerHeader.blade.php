@@ -15,6 +15,7 @@
                     <li><a class="page-scroll" href="/">Home</a></li>
                     <li><a href="{{url('products')}}">Add Domain</a></li>
                     <li><a href="{{ url('products_list')  }}">New Request List</a>  </li>
+                    <li><a href="{{ url('showAllSales')  }}">All Sales</a>  </li>
 
 
                     <li>

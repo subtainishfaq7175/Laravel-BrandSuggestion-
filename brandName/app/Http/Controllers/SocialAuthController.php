@@ -16,38 +16,13 @@ class SocialAuthController extends Controller
         return Socialite::driver('facebook')->redirect();
     }
     // callback function
-    public function callback(SocialAccountService $service){
+    public function callback(SocialAccountService $service)
+    {
         // when facebook call us a with token
         $user = $service->createOrGetUser(Socialite::driver('facebook')->stateless()->user());
 
 
         Auth()->login(Auth::user(), true);
-        return ('/')->with('message','You has been Login successfully!');
-        //return redirect()->to('/');
-        /*try{
-            $socialUser = Socialite::driver('facebook')->stateless()->user();
-        }catch (Exception $e){
-            $this->redirect('/');
-        }
-
-        $user = usersModel::where('provider_user_id', $socialUser->getId())->first();
-        if(!$user){
-            usersModel::create([
-                'provider_user_id' => $socialUser->getId(),
-                'name' => $socialUser->getName(),
-                'email' => $socialUser->getEmail(),
-                'provider' => 'Provider',
-            ]);
-        }
-
-        if ( $user->accout == 0){
-            $users = $user;
-            return view('account_type', compact('users'));
-        }
-        Auth::login($user);*/
-
-
-
-
+        return ('/')->with('message', 'You has been Login successfully!');
     }
 }

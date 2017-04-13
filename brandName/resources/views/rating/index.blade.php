@@ -31,7 +31,7 @@
                                                 <input type="submit" value="Submit">
                                             </form></td>  </tr>
 
-                                    <tr><td></td> <td><a class="btn-success" href="{{route('payments')}}">Purchase</a></td></tr>
+                                    <tr><td></td> <td>{{link_to_route('payments','Purchase',[$product->price, $product->id ], ['class'=>'btn btn-primary'])}}</td></tr>
                                 <tr style="background-color: #00BCD4"><td></td> <td></td>  </tr>
 
                                 @endforeach
