@@ -15,16 +15,16 @@ use Illuminate\Support\Facades\DB;
 use App\Products;
 class PurchasesController extends Controller
 {
-    public function index($id , $proid)
+    public function index($id , $proid , $rqid)
     {
-        return view('payment.index',compact('id', 'proid'));
+        return view('payment.index',compact('id', 'proid', 'rqid'));
     }
 
     public function orderPost(Request $request)
     {
-       $user = usersModel::find(Auth::user()->id);
+       //$user = usersModel::find(Auth::user()->id);
        $user = Auth::user()->id;
-       $payment = Purchases::all();
+
         // creating purchases
         $products = DB::table('products')
             ->where('id',$request->input('product_id') )->get();
@@ -51,6 +51,16 @@ class PurchasesController extends Controller
         }catch(Exception $e){
             return back()->with('success',$e->getMessage());
         }
+
+        //deleting resquest when anyone make purchased
+
+
+
+        //deleting response against  this request  when anyone make purchased
+
+
+
+
         // changing the owner
         try{
             $item = Products::find($products[0]->id);

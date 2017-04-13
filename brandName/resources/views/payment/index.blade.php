@@ -1,5 +1,5 @@
 @extends('layout.master')
-@include('commun.header')
+@include('commun.buyerHeader')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -130,6 +130,14 @@
                             <span class="payment-errors" style="color: red;margin-top:10px;"></span>
                         </div>
                     </div>
+
+                    {!! Form::hidden('rqid',$rqid, [
+
+                         'value'                         => $rqid ,
+                         'class'                       => 'form-control',
+                         'readonly'                       => 'readonly',
+                         'data-parsley-class-handler'  => '#product-group'
+                         ]) !!}
 
                     {!! Form::close() !!}
                 </div>

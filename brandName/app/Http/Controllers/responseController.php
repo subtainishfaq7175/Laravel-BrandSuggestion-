@@ -82,7 +82,7 @@ class responseController extends Controller
                }
                 //return $respondedProduct;
 
-               return view('rating.index',compact( 'respondedProduct'));
+               return view('rating.index',compact( 'respondedProduct','reid'));
            } else
                 return Redirect()->back();
         }

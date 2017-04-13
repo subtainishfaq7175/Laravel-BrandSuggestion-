@@ -19,12 +19,13 @@ class CreateSiteUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password')->nullable();
             $table->string('con-pwd')->nullable();
-            $table->string('accout');
+            $table->string('accout')->nullable();
 
             $table->string('stripe_id')->nullable();
             $table->string('card_brand')->nullable();
             $table->string('card_last_four')->nullable();
             $table->timestamp('trial_ends_at')->nullable();
+
             $table->rememberToken();
             $table->timestamps();
         });

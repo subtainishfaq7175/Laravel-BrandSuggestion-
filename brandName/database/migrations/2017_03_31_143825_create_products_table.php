@@ -14,6 +14,7 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
+
             $table->increments('id');
             $table->string('name');
             $table->string('heading');
@@ -22,10 +23,15 @@ class CreateProductsTable extends Migration
             $table->float('price');
             $table->string('domain_name');
             $table->text('description');
-            $table->text('rating');
-            $table->unsignedInteger('userid')->references('id')->on('site_users');
+            $table->text('rating')->nullable();
             $table->string('unitTime');
+
+            $table->integer('userid')->unsigned();
+
+            $table->foreign('userid')->references('id')->on('site_users')->onDelete('cascade');
+
             $table->timestamps();
+
         });
     }
 

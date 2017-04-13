@@ -67,5 +67,5 @@ Route::get('home', 'HomeController@index');
 
 
 // Purchases
-Route::get('payments/{id}{proid}','PurchasesController@index')->name('payments');
+Route::get('payments/{price}{proid}{rqid}','PurchasesController@index')->name('payments');
 Route::post('order-post','PurchasesController@orderPost')->name('order-post');
