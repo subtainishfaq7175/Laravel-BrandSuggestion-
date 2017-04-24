@@ -26,12 +26,12 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                     {{ Auth::user()->email }} <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    @if(Auth::user()->accout == 2)
+                                    @if(Auth::user()->role_id == 2)
                                         <li><a href="{{url('request')}}">Dashboard</a></li>
 
                                         @endif
 
-                                    @if(Auth::user()->accout == 1)
+                                    @if(Auth::user()->role_id == 1)
                                         <li><a href="{{url('products')}}">Dashboard</a></li>
                                         <li role="separator" class="divider"></li>
                                     @endif

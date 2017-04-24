@@ -8,11 +8,16 @@ use Illuminate\Http\Request;
 
 class SalesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function showAllSales()
     {
         $products = DB::table('sales')
             ->where('saller_id', Auth::user()->id)->get();
-        if ( Auth::user()->accout == 1)
+        if ( Auth::user()->role_id == 1)
         {
             if( count($products)>0 )
                 return view('soledProducts.showAllsales',compact('products'));
@@ -20,6 +25,6 @@ class SalesController extends Controller
         }
 
 
-        return view('index');
+        return view('welcome');
     }
 }

@@ -13,7 +13,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a class="page-scroll" href="/">Home</a></li>
-                    <li><a href="{{url('products')}}">Add Domain</a></li>
+                    <li><a href="{{url('products')}}">Names</a></li>
                     <li><a href="{{ url('products_list')  }}">New Request List</a>  </li>
                     <li><a href="{{ url('showAllSales')  }}">All Sales</a>  </li>
 
@@ -25,12 +25,12 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 {{ Auth::user()->email }} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                @if(Auth::user()->accout == 2)
+                                @if(Auth::user()->role_id == 2)
                                     <li><a href="#">Profile</a></li>
 
                                 @endif
 
-                                @if(Auth::user()->accout == 1)
+                                @if(Auth::user()->role_id == 1)
                                     <li><a href="#">Profile</a></li>
                                 @endif
 
@@ -46,4 +46,9 @@
             </div>
         </div>
     </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+
 </header>

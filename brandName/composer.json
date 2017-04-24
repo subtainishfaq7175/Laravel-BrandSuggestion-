@@ -6,13 +6,14 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+
+        "laravel/cashier": "~7.0",
         "laravel/framework": "5.4.*",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.2.0",
-        "laraveldaily/quickadmin": "^2.1",
-        "willvincent/laravel-rateable": "~1.0",
-        "laravel/cashier": "~7.0"
+        "stripe/stripe-php": "3.*",
+        "willvincent/laravel-rateable": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

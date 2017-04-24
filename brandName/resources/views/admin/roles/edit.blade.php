@@ -1,40 +1,39 @@
-@extends('admin.layouts.master')
+@extends('layouts.backend')
 
 @section('content')
+    <div class="container">
+        <div class="row">
+            @include('admin.sidebar')
 
-    <div class="row">
-        <div class="col-sm-10 col-sm-offset-2">
-            <h1>{{ trans('quickadmin::admin.roles-edit-edit_role') }}</h1>
+            <div class="col-md-9">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Edit Role</div>
+                    <div class="panel-body">
+                        <a href="{{ url('/admin/roles') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <br />
+                        <br />
 
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        {!! implode('', $errors->all('
-                        <li class="error">:message</li>
-                        ')) !!}
-                    </ul>
+                        @if ($errors->any())
+                            <ul class="alert alert-danger">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
+
+                        {!! Form::model($role, [
+                            'method' => 'PATCH',
+                            'url' => ['/admin/roles', $role->id],
+                            'class' => 'form-horizontal'
+                        ]) !!}
+
+                        @include ('admin.roles.form', ['submitButtonText' => 'Update'])
+
+                        {!! Form::close() !!}
+
+                    </div>
                 </div>
-            @endif
+            </div>
         </div>
     </div>
-
-    {!! Form::open(['route' => ['roles.update', $role->id], 'class' => 'form-horizontal', 'method' => 'PATCH']) !!}
-
-    <div class="form-group">
-        {!! Form::label('title', trans('quickadmin::admin.roles-edit-title'), ['class'=>'col-sm-2 control-label']) !!}
-        <div class="col-sm-10">
-            {!! Form::text('title', old('title', $role->title), ['class'=>'form-control', 'placeholder'=> trans('quickadmin::admin.roles-edit-title_placeholder')]) !!}
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-sm-10 col-sm-offset-2">
-            {!! Form::submit(trans('quickadmin::admin.roles-edit-btnupdate'), ['class' => 'btn btn-primary']) !!}
-        </div>
-    </div>
-
-    {!! Form::close() !!}
-
 @endsection
-
-

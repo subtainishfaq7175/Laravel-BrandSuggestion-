@@ -16,7 +16,9 @@ class CreatePurchsesTable extends Migration
         Schema::create('purchases', function (Blueprint $table) {
             $table->increments('transc_id');
             $table->string('userid');
+            $table->string('s_name');
             $table->string('pro_id');
+            $table->string('pro_name');
             $table->string('amount');
             $table->string('buyer_id');
             $table->timestamps();

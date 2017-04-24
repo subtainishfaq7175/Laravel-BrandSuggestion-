@@ -1,61 +1,35 @@
-@extends('admin.layouts.master')
+@extends('layouts.backend')
 
 @section('content')
+    <div class="container">
+        <div class="row">
+            @include('admin.sidebar')
 
-    <div class="row">
-        <div class="col-sm-10 col-sm-offset-2">
-            <h1>{{ trans('quickadmin::admin.users-create-create_user') }}</h1>
+            <div class="col-md-9">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Create New User</div>
+                    <div class="panel-body">
+                        <a href="{{ url('/admin/users') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <br />
+                        <br />
 
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        {!! implode('', $errors->all('
-                        <li class="error">:message</li>
-                        ')) !!}
-                    </ul>
+                        @if ($errors->any())
+                            <ul class="alert alert-danger">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
+
+                        {!! Form::open(['url' => '/admin/users', 'class' => 'form-horizontal']) !!}
+
+                        @include ('admin.users.form')
+
+                        {!! Form::close() !!}
+
+                    </div>
                 </div>
-            @endif
+            </div>
         </div>
     </div>
-
-    {!! Form::open(['route' => 'users.store', 'class' => 'form-horizontal']) !!}
-
-    <div class="form-group">
-        {!! Form::label('name', trans('quickadmin::admin.users-create-name'), ['class'=>'col-sm-2 control-label']) !!}
-        <div class="col-sm-10">
-            {!! Form::text('name', old('name'), ['class'=>'form-control', 'placeholder'=> trans('quickadmin::admin.users-create-name_placeholder')]) !!}
-        </div>
-    </div>
-
-    <div class="form-group">
-        {!! Form::label('email', trans('quickadmin::admin.users-create-email'), ['class'=>'col-sm-2 control-label']) !!}
-        <div class="col-sm-10">
-            {!! Form::email('email', old('email'), ['class'=>'form-control', 'placeholder'=> trans('quickadmin::admin.users-create-email_placeholder')]) !!}
-        </div>
-    </div>
-
-    <div class="form-group">
-        {!! Form::label('password', trans('quickadmin::admin.users-create-password'), ['class'=>'col-sm-2 control-label']) !!}
-        <div class="col-sm-10">
-            {!! Form::password('password', ['class'=>'form-control', 'placeholder'=> trans('quickadmin::admin.users-create-password_placeholder')]) !!}
-        </div>
-    </div>
-
-    <div class="form-group">
-        {!! Form::label('role_id', trans('quickadmin::admin.users-create-role'), ['class'=>'col-sm-2 control-label']) !!}
-        <div class="col-sm-10">
-            {!! Form::select('role_id', $roles, old('role_id'), ['class'=>'form-control']) !!}
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-sm-10 col-sm-offset-2">
-            {!! Form::submit(trans('quickadmin::admin.users-create-btncreate'), ['class' => 'btn btn-primary']) !!}
-        </div>
-    </div>
-
-    {!! Form::close() !!}
-
 @endsection
-
-

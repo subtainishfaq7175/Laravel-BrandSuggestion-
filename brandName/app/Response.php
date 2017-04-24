@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Response extends Model
 {
-    protected $table = 'Response';
+    protected $table = 'response';
 
     protected $fillable = ['rid','productid','sallerid'];
 

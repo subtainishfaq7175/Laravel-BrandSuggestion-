@@ -16,7 +16,9 @@ class CreateSalesTable extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->increments('transc_id');
             $table->string('userid');
+            $table->string('b_name');
             $table->string('pro_id');
+            $table->string('pro_name');
             $table->string('amount');
             $table->string('saller_id');
             $table->timestamps();;

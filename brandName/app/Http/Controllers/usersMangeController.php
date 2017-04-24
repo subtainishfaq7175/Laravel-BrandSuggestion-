@@ -9,7 +9,7 @@ use Auth;
 class usersMangeController extends Controller
 {
     public function index(){
-        return view('index');
+        return view('welcome');
     }
 
     public function userindex(){
@@ -19,7 +19,7 @@ class usersMangeController extends Controller
     public function update($id)
     {
         $input = Input::get();
-        $accout =  $input['accout'];
+        $accout =  $input['role_id'];
         $item = usersModel::find($id);
 
         if($item) {
@@ -27,7 +27,7 @@ class usersMangeController extends Controller
             $item->save();
                 //return Auth::user()->accout;
 
-            return view('index')->with('message', 'Item has been loged in successfully!');
+            return view('welcome')->with('message', 'Item has been loged in successfully!');
 
         }else return "Not found";
 

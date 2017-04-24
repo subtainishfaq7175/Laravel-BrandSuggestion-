@@ -3,9 +3,18 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            @if(Session::has('message'))
-                <div class="alert alert-success"> {{Session::get('message')}} </div>
+            @if (session('message'))
+                <div class="alert alert-success" id="success-alert">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {{ session('message') }}
+                </div>
             @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>{{ implode('', $errors->all() ) }}
+                        </ul>
+                    </div>
+                @endif
 
             <div class="panel panel-default">
                 <div class="panel-heading"> <center> <h2>Respond to request </h2></center> </div>

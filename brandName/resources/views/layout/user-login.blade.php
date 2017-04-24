@@ -22,17 +22,28 @@
                         <div class="form-group">
                             <input type="submit" name="submit" value="Signin" class="form-control btn btn-block btn-primary"
                                    style="padding-top: 10px;">
+                        </div>
+                            <div class="form-group">
+                            <a href="{{ route('redirect' ) }}">
+                                <img src="assets/images/fb.png" class="fbbtn">
+                            </a>
+                                <a href="{{ route('redirectt' ) }}">
+                                    <img src="assets/images/g.png" class="gbtn">
+                                </a>
                             {{--<a href="redirect">FB Login</a>
                             <p class="pull-right">
+                            {{link_to_route('redirect','Log In',['facebook' ], ['class'=>'btn btn-primary  fbbtn'])}}
                                 <a class="" href="javascript:;" data-toggle="modal" data-target="#forget-password">Forget password</a>
                             </p>--}}
                         </div>
                     </form>
+                <div class="form-group">
+                    <a class="" href="javascript:;" data-toggle="modal" data-target="#signupModal"><button class="form-control btn btn-primary btn-block" style="padding-top: 10px;">  Signup</button></a>
+                </div>
             </div>
-            <div class="modal-footer">
 
-                <a class="" href="javascript:;" data-toggle="modal" data-target="#signupModal"><button class="btn btn-primary btn-block">  Signup</button></a>
-            </div>
+
+
         </div>
 
     </div>

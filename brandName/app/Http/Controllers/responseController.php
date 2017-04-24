@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Rating;
+use App\Requst;
 use Illuminate\Http\Request;
 use Auth;
 use App\Response;
@@ -11,11 +11,16 @@ use Illuminate\Support\Facades\Input;
 
 class responseController extends Controller
 {
+  public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
 
     public function index($id)
     {
 
-        If(Auth::user()->accout == 1 )
+        If(Auth::user()->role_id == 1 )
         {
 
             // not responded view
@@ -23,18 +28,23 @@ class responseController extends Controller
                 ->where('userid', Auth::user()->id )->get();
             return  view('response.index', compact('products', 'id'));
         }
-        return view('index');
+        return view('welcome');
     }
 
     public function store(Request $request)
     {
+        $rules = array(
+            'selectpicker' => 'required'
+        );
+
+        $input = Input::get();
+        $validation = Validator($input, $rules);
+        if ($validation->fails()){
+            return back()->withErrors($validation);
+        }
        // return Input::get('selectpicker');
-        $products = DB::table('products')
-            ->where( 'id', Input::get('selectpicker') )->get();
-       //return  Input::get('selectpicker');
-        //return Auth::user()->id;
-      // return $products;
-       foreach ($products as $product)
+        $product = DB::table('products')
+            ->where( 'id', Input::get('selectpicker') )->first();
 
         $reponse = Input::get();
 
@@ -45,8 +55,8 @@ class responseController extends Controller
        if( Response::create($reponse) )
        {
            //updating singlw colom of status in "domqin_request" table
-           Rating::where('id', $reponse['id'])->update(array('status' => 1 ));
-           return Redirect()->back()->with('message','Success');
+           Requst::where('id', $reponse['id'])->update(array('status' => 1 ));
+           return redirect()->route('products_list')->with('message','Success');
        }
 
 
@@ -55,7 +65,7 @@ class responseController extends Controller
 
     public function show($reid)
     {
-        if ( Auth::user()->accout == 2)
+        if ( Auth::user()->role_id == 2)
         {
 
             // getting saller id from response table  if responed other wise error
@@ -68,23 +78,17 @@ class responseController extends Controller
                //$respondedcomplete=array();
                foreach ($saller as $sale)
                {
-                   // getting saller who are respond to request
-                  /* $saller = DB::table('site_users')
-                       ->where('id',$sale->sallerid)->get();
-                   array_push($respondSaller,$saller );*/
-
-                   //getting products that are going to display , that are responded by saller on request
                    $products = DB::table('products')
                        ->where('id',$sale->productid)->get();
                    array_push($respondedProduct,$products );
-                   // getting complete..
-                  // array_push($respondedcomplete,$products,$respondSaller );
                }
                 //return $respondedProduct;
+               $res = DB::table('response')
+                   ->where('rid', $reid )->first();
 
-               return view('rating.index',compact( 'respondedProduct','reid'));
+               return view('rating.index',compact( 'respondedProduct','reid' , 'res'));
            } else
-                return Redirect()->back();
+                return Redirect()->back()->with('message','Sorry, No Response against this request');
         }
     }
 

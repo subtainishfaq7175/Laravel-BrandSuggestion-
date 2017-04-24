@@ -3,30 +3,35 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Laraveldaily\Quickadmin\Models\Menu;
 
 class Role extends Model
 {
-    protected $fillable = ['title'];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['name', 'label'];
 
-    public $relation_ids = [];
-
-    public function menus()
+    /**
+     * A role may be given various permissions.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function permissions()
     {
-        return $this->belongsToMany(Menu::class);
+        return $this->belongsToMany(Permission::class);
     }
 
-    public function canAccessMenu($menu)
+    /**
+     * Grant the given permission to a role.
+     *
+     * @param  Permission $permission
+     *
+     * @return mixed
+     */
+    public function givePermissionTo(Permission $permission)
     {
-        if ($menu instanceof Menu) {
-            $menu = $menu->id;
-        }
-
-        if (! isset($this->relation_ids['menus'])) {
-            $this->relation_ids['menus'] = $this->menus()->pluck('id')->flip()->all();
-        }
-
-        return isset($this->relation_ids['menus'][$menu]);
+        return $this->permissions()->save($permission);
     }
 }
-

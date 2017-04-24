@@ -1,5 +1,8 @@
 @extends('layout.master')
 @extends('commun.buyerHeader')
+<br>
+<br>
+<br>
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -18,10 +21,7 @@
                         {!! Form::label('body','Description') !!}
                         {!! Form::textarea('description',null , ['class'=>'form-control','required']) !!}
                     </div>
-                    <div class="form-group">
-                        {!! Form::label('deadline','Remark') !!}
-                        {!! Form::text('remarks',null , ['class'=>'form-control']) !!}
-                    </div>
+
 
                     <div class="form-group">
 

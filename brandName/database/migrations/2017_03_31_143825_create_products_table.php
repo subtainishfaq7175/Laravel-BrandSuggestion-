@@ -17,22 +17,26 @@ class CreateProductsTable extends Migration
 
             $table->increments('id');
             $table->string('name');
+            $table->integer('avg_rate')->default(0);
+            $table->integer('saleNot')->default(0);
+            $table->integer('userid')->unsigned();
             $table->string('heading');
             $table->string('subheading');
             $table->string('category');
             $table->float('price');
             $table->string('domain_name');
             $table->text('description');
-            $table->text('rating')->nullable();
+            $table->integer('rating')->nullable();
             $table->string('unitTime');
 
-            $table->integer('userid')->unsigned();
 
-            $table->foreign('userid')->references('id')->on('site_users')->onDelete('cascade');
+            $table->foreign('userid')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
 
         });
+
+
     }
 
     /**

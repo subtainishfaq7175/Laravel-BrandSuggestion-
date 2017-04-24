@@ -38,7 +38,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', true),
+    'debug' => env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -163,15 +163,6 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
-        Illuminate\Auth\AuthServiceProvider::class,
-
-        willvincent\Rateable\RateableServiceProvider::class,
-        Laravel\Socialite\SocialiteServiceProvider::class,
-        Collective\Html\HtmlServiceProvider::class,
-
-        Laravel\Cashier\CashierServiceProvider::class,
-
         /*
          * Package Service Providers...
          */
@@ -185,8 +176,13 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        
+        Collective\Html\HtmlServiceProvider::class,
 
+        Laravel\Socialite\SocialiteServiceProvider::class,
+        Laravel\Cashier\CashierServiceProvider::class,
 
+        Collective\Html\HtmlServiceProvider::class,
 
     ],
 
@@ -236,10 +232,12 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
         'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\HtmlFacade::class,
+        'HTML' => Collective\Html\HtmlFacade::class,
 
     ],
 

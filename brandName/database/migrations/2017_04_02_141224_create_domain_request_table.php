@@ -17,11 +17,11 @@ class CreateDomainRequestTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->longText('description');
-            $table->string('remarks');
+            $table->string('remarks')->nullable();
             $table->integer('status')->nullable();
             $table->integer('userid')->unsigned();
-
-            $table->foreign('userid')->references('id')->on('site_users')->onDelete('cascade');
+            $table->integer('p_status')->default(0);
+            $table->foreign('userid')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });

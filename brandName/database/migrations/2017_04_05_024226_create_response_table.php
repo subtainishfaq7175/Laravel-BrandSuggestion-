@@ -19,10 +19,11 @@ class CreateResponseTable extends Migration
             $table->integer('rid')->unsigned();
             $table->integer('productid')->unsigned();
             $table->integer('sallerid')->unsigned();
+            $table->integer('rating')->nullable();
 
             $table->foreign('rid')->references('id')->on('domain_request')->onDelete('cascade');
             $table->foreign('productid')->references('id')->on('products')->onDelete('cascade');
-            $table->foreign('sallerid')->references('id')->on('site_users')->onDelete('cascade');
+            $table->foreign('sallerid')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });

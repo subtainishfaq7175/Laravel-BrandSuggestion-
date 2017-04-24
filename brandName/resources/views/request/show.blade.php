@@ -1,10 +1,13 @@
 @extends('layout.master')
 @extends('commun.buyerHeader')
+<br>
+<br>
+<br>
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading"> <center> <h2>New Request Details </h2></center> </div>
+                <div class="panel-heading"> <center> <h2>Request Details </h2></center> </div>
 
                 <div class="panel-body">
                     <table class="table">

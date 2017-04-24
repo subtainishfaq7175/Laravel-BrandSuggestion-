@@ -17,7 +17,8 @@
                         <tr> <td>Product Description</td> <td>{{$product->description}} </td> </tr>
                         <tr> <td>Product rating</td> <td>{{$product->rating}} </td> </tr>
                         <tr> <td>Product unit time</td> <td>{{$product->unitTime}} </td> </tr>
-                        <tr> <td>Product created at</td> <td>{{$product->created_at}} </td> </tr>
+                        <tr> <td>Product unit time</td> <td>{{$product->unitTime}} </td> </tr>
+                        <tr> <td>Avg Rating</td> <td>{{$product->rating}} </td> </tr>
                         <tr> <td>Product updated at</td> <td>{{$product->updated_at}} </td> </tr>
                     </table>
                     <td> <button class="btn-black btn-primary pull-right" > {{ link_to_route('products.index','Home') }} </button> </td>

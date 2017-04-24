@@ -1,3 +1,20 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+
+    function Validate() {
+        loadLoader();
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("con-pwd").value;
+        if (password != confirmPassword) {
+            alert("Passwords do not match.");
+            hideLoader();
+            return false;
+        }
+        return true;
+    }
+</script>
 <div id="signupModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
@@ -8,32 +25,32 @@
                 <h4 class="modal-title">SignUp</h4>
             </div>
             <div class="modal-body">
-                    <form action="{{ url('/signup') }}" method="post">
-                        {{csrf_field()}}
+                        <form action="{{ url('/dousersignup ') }}" method="post" onsubmit="return Validate()">
+                        <input type="hidden" data-validation name="_token" value="{{ csrf_token() }}">
                         <div class="form-group">
                             <label for="name">Full Name</label>
-                            <input type="text" name="name" class="form-control" value="{{old('name')}}" required>
+                            <input type="text" data-validation name="name" class="form-control" value="{{old('name')}}" required>
                         </div>
                         <div class="form-group">
                             <label for="Email">E-mail</label>
-                            <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
+                            <input type="email"  data-validation="email" name="email" class="form-control" value="{{ old('email') }}" required>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" name="password" class="form-control" required>
+                            <input type="password" data-validation name="password" id="password" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="con-pwd">Confrom password</label>
-                            <input type="password" name="con-pwd" class="form-control" required>
+                            <label for="confrom-password">Confrom password</label>
+                            <input type="password"  data-validation="confirmation" name="con-pwd" id="con-pwd"  class="form-control"  required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" style="display: inline-block">
                             <label for="select-account">Select Account type</label> <br>
-                            <input name="accout" type="radio"  value="1">Saller <br>
-                            <input name="accout" type="radio" value="2">Buyer
+                            <input name="role_id" type="radio"  value="1"  > Seller
+                            <input name="role_id" type="radio" value="2" style="margin-left: 20px"> Buyer
                         </div>
 
                         <div class="form-group">
-                            <input type="submit" name="submit" value="Signup" class="form-control btn btn-block btn-primary"
+                            <input  type="submit" name="submit" value="Signup" class="form-control btn btn-block btn-primary"
                                    style="padding-top: 10px;">
                         </div>
 
@@ -44,6 +61,9 @@
 
     </div>
 </div>
+
+
+
 
 
 

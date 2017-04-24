@@ -26,7 +26,11 @@
 
                                     |
                                     {!! Form::button('Delete',['class'=>'btn btn-danger','type'=>'submit']) !!} |
-                                    {{link_to_route('showResponse','Show response',[$request->id], ['class'=>'btn btn-primary'])}}
+                                    @if($request->p_status == 1)
+                                        {!! Form::button('Purchased',['class'=>'btn btn-info']) !!}
+                                    @else
+                                        {{link_to_route('showResponse','Show response',[$request->id], ['class'=>'btn btn-primary'])}}
+                                    @endif
                                     {!! Form::close() !!}
                                 </td>
                             </tr>

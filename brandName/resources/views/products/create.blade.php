@@ -7,6 +7,11 @@
                 <div class="panel-heading">Create New Domain</div>
 
                 <div class="panel-body">
+                    
+                    @if(Session::has('message'))
+                        <div class="alert alert-success"> {{Session::get('message')}} </div>
+                    @endif
+                    
                     {!! Form::open(array('route'=>'products.store')) !!}
                     <div class="form-group">
                         {!! Form::label('title','Name') !!}
@@ -40,10 +45,7 @@
                         {!! Form::label('status','Description') !!}
                         {!! Form::text('description',null , ['class'=>'form-control','required']) !!}
                     </div>
-                    <div class="form-group">
-                        {!! Form::label('status','Rating') !!}
-                        {!! Form::text('rating',null , ['class'=>'form-control','required']) !!}
-                    </div>
+
                     <div class="form-group">
                         {!! Form::label('status','Unit Time') !!}
                         {!! Form::text('unitTime',null , ['class'=>'form-control','required']) !!}

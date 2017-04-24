@@ -4,7 +4,7 @@
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-    <title>Helium | Responsive Multipurpose Landing Page</title>
+    <title>NameSquad</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -36,6 +36,9 @@
 
 </head>
 <body>
+<div id="loading">
+    <img id="loading-image" src="{{url('assets/images/loading.gif')}}" alt="Loading..." />
+</div>
 
 
 
@@ -60,6 +63,14 @@
 <script src="{{url('assets/js/vendors/contact.js')}}"></script>
 <script src="{{url('assets/js/vendors/mc/jquery.ketchup.all.min.js')}}"></script>
 <script src="{{url('assets/js/vendors/mc/main.js')}}'"></script>
+<script src="assets/js/jquery.form-validator.js"></script>
+<script src="{{url('assets/js/loadernamesquad.js')}}"></script>
 
+
+<script language="javascript" type="text/javascript">
+    $(window).load(function() {
+        $('#loading').hide();
+    });
+</script>
 </body>
 </html>

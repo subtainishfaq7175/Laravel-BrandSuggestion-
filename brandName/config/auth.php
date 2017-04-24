@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        //user made guard for admins
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
 
         'api' => [
             'driver' => 'token',
@@ -67,13 +72,18 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\usersModel::class,
+            'model' => App\User::class,
+        ],
+        //this is provider for user made guard, with his own Model "Admin" or others
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
         ],
 
-         'users' => [
-             'driver' => 'database',
-             'table' => 'site_users',
-         ],
+        // 'users' => [
+        //     'driver' => 'database',
+        //     'table' => 'users',
+        // ],
     ],
 
     /*
@@ -90,7 +100,6 @@ return [
     | they have less time to be guessed. You may change this as needed.
     |
     */
-
 
     'passwords' => [
         'users' => [

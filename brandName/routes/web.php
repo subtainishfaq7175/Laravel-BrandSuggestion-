@@ -1,6 +1,5 @@
-
 <?php
-use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,39 +10,43 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-use App\User;
+
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
-Route::get('signup',['uses'=>'usersMangeController@index'])->name('signup');
-Route::post('/signup', array('as'=>'signup' ,'befor'=>'csrf','uses'=>'Authcontroller@usersignup'));
-Route::post('/userLogin', array('as'=>'userLogin','uses'=>'Authcontroller@authenticate'));
-Route::get('/logout', array('as'=>'logout' ,'uses'=>'Authcontroller@userlogout'));
 
-Route::get('/redirect', 'SocialAuthController@redirect');
-Route::get('/callback', 'SocialAuthController@callback');
+Route::get('welcome', 'HomeController@welcome')->name('welcome');
 
-Route::group(['middleware' => 'auth'], function()
-{
-        Route::resource('products','ProductController');
-});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+
+Route::post('/dousersignup','SiteUsersController@usersignup')->name('dousersignup');
+
+Route::post('/userLogin','SiteUsersController@doLogin')->name('userLogin');
+Route::get('/logout','SiteUsersController@userlogout')->name('userlogout');
+
+
+Route::resource('products','ProductController');
+
 // domain request controller
-Route::get('domainRequest','RatingController@index');
-Route::post('adDomainRequest','RatingController@store')->name('adDomainRequest');
+Route::resource('request','RequestController');
 
-//Request controller
-Route::group(['middleware' => 'auth'], function()
-{
-    Route::resource('request','RatingController');
-});
+Route::get('domainRequest','RequestController@index');
 
+Route::post('adDomainRequest','RequestController@store')->name('adDomainRequest');
+
+Route::get('products_list','RequestController@products_list')->name('products_list');
 //show all buyer purchased products
 Route::get('showAllPurchases','PurchasesController@showAllPurchases')->name('showAllPurchases');
 
-Route::get('products_list','RatingController@products_list')->name('products_list');
+//Show response
+Route::get('showResponse/{reid}','responseController@show')->name('showResponse');
+
 Route::get('doResponse/{id}','responseController@index')->name('doResponse');
 
-//showing all sales
 Route::get('showAllSales','SalesController@showAllSales')->name('showAllSales');
 
 
@@ -59,13 +62,30 @@ Route::Put('/users/{id}',['uses' => 'usersMangeController@update']);
 
 // getting Rating
 
-Route::post('ratting','RatingController@doRating')->name('doRating');
+Route::post('ratting','RequestController@doRating')->name('doRating');
+
+// social login
+Route::get('/redirect', 'SocialAuthController@redirect')->name('redirect');
+Route::get('/callback', 'SocialAuthController@callback')->name('callback');
+
+//goole +
+Route::get('/redirectt', 'SocialAuthController@redirectt')->name('redirectt');
+Route::get('/goolecallback', 'SocialAuthController@goolecallback')->name('goolecallback');
 
 
-Auth::routes();
-Route::get('home', 'HomeController@index');
+Route::post('/socialSignin', 'SocialAuthController@socialSignin')->name('socialSignin');
 
 
-// Purchases
 Route::get('payments/{price}{proid}{rqid}','PurchasesController@index')->name('payments');
+
 Route::post('order-post','PurchasesController@orderPost')->name('order-post');
+
+//routes for admins
+Route::get('/admin','Admin\AdminLoginController@index')->name('/admin');
+
+Route::get('/adminDashboard','Admin\AdminController@index')->name('adminDashboard');
+
+Route::post('/adminLogin','Admin\AdminLoginController@adminLogin')->name('/adminLogin');
+
+
+

@@ -77,7 +77,6 @@ b, strong {
 a {
 	color: #333;
 }
-
 a:hover {
 	color: #1dc6bc;
 }
@@ -192,6 +191,7 @@ input:focus, button:focus, .slick-slide {
 .btn.btn-primary {
 	background-color: #1dc6bc;
 	border: 2px solid #1dc6bc;
+	border-radius: 5px;
 }
 
 .btn.btn-primary.btn-border {
@@ -207,6 +207,7 @@ input:focus, button:focus, .slick-slide {
 
 .btn.btn-success {
 	background-color: #2ecc71;
+	border-radius: 5px;
 }
 
 .btn.btn-success.btn-border {
@@ -221,6 +222,7 @@ input:focus, button:focus, .slick-slide {
 
 .btn.btn-info {
 	background-color: #81cfe0;
+	border-radius: 5px;
 }
 
 .btn.btn-info.btn-border {
@@ -249,6 +251,8 @@ input:focus, button:focus, .slick-slide {
 
 .btn.btn-danger {
 	background-color: #c0392b;
+	border-radius: 5px;
+	height: 48px;
 }
 
 .btn.btn-danger.btn-border {
@@ -3438,7 +3442,7 @@ blockquote {
 
 	.intro-style1 .btn.btn-lg {
 		padding: 14px 23px;
-		margin-bottom: 50px;
+		border-radius: 5px;
 	}
 
 	.intro-style1 h2 {
@@ -3645,4 +3649,43 @@ blockquote {
 		margin-bottom: 30px;
 	}
 
+}
+
+
+
+
+
+
+
+#loading {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	display: block;
+	opacity: 0.7;
+	background-color: rgba(0, 20, 28, 0.4);
+	z-index: 99;
+	text-align: center;
+}
+
+#loading-image {
+	position: absolute;
+	top: 100px;
+	left: 35%;
+	z-index: 100;
+}
+
+.fbbtn{
+	color: #FFFFFF;
+	width: 50%;
+	height: 40px;
+	float: left;
+}
+.gbtn{
+	margin-top: 3px;
+	width: 50%;
+	height: 34px;
+	border-radius: 2px;
 }

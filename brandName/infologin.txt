@@ -1,0 +1,14 @@
+CPanal login
+
+username: hamza
+password: G(}tDC f_[3qy+qtE-HM2Lm4A
+
+
+Putty login
+
+hostname: 107.172.154.12
+port (instead of default 22 for ssh) : 2489
+key : I am sending you
+key phrase( which will be asked later in shell):  laravel12345678
+name: hamza 
+password: wont be asked, if asked use : G(}tDC f_[3qy+qtE-HM2Lm4A

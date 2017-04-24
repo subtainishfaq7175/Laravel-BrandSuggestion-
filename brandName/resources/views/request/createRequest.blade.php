@@ -35,10 +35,7 @@
                         {!! Form::label('body','File') !!}
                         {!! Form::file('file',null , ['class'=>'form-control']) !!}
                     </div>
-                    <div class="form-group">
-                        {!! Form::label('deadline','Remarks') !!}
-                        {!! Form::text('remarks',null , ['class'=>'form-control' ,'required']) !!}
-                    </div>
+
                     {!! Form::button('Create',['type'=>'submit', 'class'=>'btn btn-primary']) !!}
                     {!! Form::close() !!}
                 </div>

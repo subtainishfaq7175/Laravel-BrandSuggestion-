@@ -7,6 +7,7 @@
                 <div class="alert alert-success"> {{Session::get('message')}} </div>
             @endif
             <div class="panel panel-default">
+                @if(count($products)>0)
                 <div class="panel-heading">Products</div>
 
                 <div class="panel-body">
@@ -35,9 +36,10 @@
 
                 </div>
             </div>
-            {{link_to_route('products.create','Add new task',null, ['class'=>'btn btn-success'])}}
-
+            @else <p>You donot have any name,, for create new name click blow button ...  </p>
         </div>
+        @endif
+        {{link_to_route('products.create','Add new Name',null, ['class'=>'btn btn-success'])}}
     </div>
 </div>
 
