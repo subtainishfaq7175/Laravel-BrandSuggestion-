@@ -18,6 +18,7 @@ class CreateDomainRequestTable extends Migration
             $table->string('title');
             $table->longText('description');
             $table->string('remarks')->nullable();
+            $table->string('image')->nullable();
             $table->integer('status')->nullable();
             $table->integer('userid')->unsigned();
             $table->integer('p_status')->default(0);

@@ -34,6 +34,8 @@ Route::resource('products','ProductController');
 // domain request controller
 Route::resource('request','RequestController');
 
+Route::get('/download/{path}', 'RequestController@getDownload')->name('/download');
+
 Route::get('domainRequest','RequestController@index');
 
 Route::post('adDomainRequest','RequestController@store')->name('adDomainRequest');

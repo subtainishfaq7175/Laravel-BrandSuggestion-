@@ -17,7 +17,9 @@
 
                             <tr> <td>Requset title</td> <td>{{$request->title}} </td> </tr>
                             <tr> <td>Request description</td> <td>{{$request->description}} </td> </tr>
-                            <tr> <td>Request remark</td> <td>{{$request->remarks}} </td> </tr>
+                            <tr> <td>Request file</td> <td>
+                                    {{link_to_route('/download','Download file',[$request->image], ['class'=>'btn btn-large'])}}
+                                    {{--{{$request->image}}--}} </td> </tr>
 
 
                     </table>

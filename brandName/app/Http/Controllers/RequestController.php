@@ -88,8 +88,15 @@ class RequestController extends Controller
         if (Auth::user()->role_id == 2) {
             $rules = array(
                 'title' => 'required',
-                'description' => 'required|min:30'
+                'description' => 'required|min:30',
+
             );
+            if (Input::file('image')->isValid()) {
+                $destinationPath = 'uploads'; // upload path
+                $extension = Input::file('image')->getClientOriginalExtension(); // getting image extension
+                $fileName = rand(11111,99999).'.'.$extension; // real name but error Input::file('image'); //renameing image
+                $image = Input::file('image')->move($destinationPath, $fileName); // uploading file to given path
+            }
 
             $request = Input::get();
             $validation = Validator($request, $rules);
@@ -98,7 +105,7 @@ class RequestController extends Controller
             }
             $request['userid'] = Auth::user()->id;
             // return $product;
-
+            $request['image'] = $image ;
             Requst::create($request);
             return redirect()->route('request.index')->with('message', 'Request has been created successfully!');
         }
@@ -177,5 +184,11 @@ class RequestController extends Controller
             return view('request.list_product', compact('responedRequest', 'newRequest', 'rates'));
         }
         return view('welcome');
+    }
+
+    public function getDownload($path)
+    {
+        $file=$path;
+        return response()->download($file);
     }
 }

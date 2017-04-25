@@ -10,6 +10,6 @@ class Requst extends Model
     protected $table = 'domain_request';
 
     protected $fillable = [
-        'title','description','userid','p_status'
+        'title','description','userid','p_status','image'
     ];
 }
