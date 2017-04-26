@@ -73,7 +73,7 @@ class PurchasesController extends Controller
                 ]
             ]);
         } catch (\Stripe\Error\Card $e) {
-            return redirect()->route('order')
+            return back()
                 ->withErrors($e->getMessage())
                 ->withInput();
         }
@@ -113,7 +113,6 @@ class PurchasesController extends Controller
         // changing the owner
         try{
             $item = Products::find($products[0]->id);
-
             if($item) {
                 $item->userid = Auth::user()->id;
 

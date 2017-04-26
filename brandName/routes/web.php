@@ -89,5 +89,9 @@ Route::get('/adminDashboard','Admin\AdminController@index')->name('adminDashboar
 
 Route::post('/adminLogin','Admin\AdminLoginController@adminLogin')->name('/adminLogin');
 
+//newSubscription routes
+Route::get('/newSubscription','RequestController@getSubscription')->name('/newSubscription');
+
+Route::post('/postSubscription','RequestController@postSubscription')->name('/postSubscription');
 
 
