@@ -22,11 +22,12 @@ class SocialAuthController extends Controller
     // callback function
     public function callback(SocialAccountService $service)
     {
-        $user = $service->createOrGetUser(Socialite::driver('facebook')->user());
+        $user = $service->createOrGetUser(Socialite::driver('facebook')->stateless()->user());
         auth()->login($user);
         if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
             return redirect()->to('/')->with('message', 'You has been Login successfully!');
-        return view('home');
+        return view('select_account');
+
     }
 
 
@@ -51,7 +52,6 @@ class SocialAuthController extends Controller
 
     public function socialSignin(Request $request)
     {
-
         DB::table('users')
             ->where('email', Auth::user()->email)
             ->update(['role_id' => $request->input('role_id')]);

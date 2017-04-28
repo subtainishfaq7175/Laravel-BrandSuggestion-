@@ -19,6 +19,9 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password')->nullable();
             $table->string('role_id')->nullable();
+            $table->string('s_plan_id')->default(0);
+            $table->string('s_cus_id')->default(0);
+            $table->string('s_sub_id')->default(0);
             $table->integer('subscriptions')->default(0);
             $table->string('stripe_id')->nullable();
             $table->string('card_brand')->nullable();

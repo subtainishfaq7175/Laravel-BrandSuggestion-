@@ -103,10 +103,10 @@ class RequestController extends Controller
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         $token =  $request->input('stripeToken');
         $amount  =  $request->input('plane') * 100;
-      $plan = \Stripe\Plan::create(array(
+        $plan = \Stripe\Plan::create(array(
             "name" => "Basic Plan",
-            "id" => "basic-monthly",
             "interval" => "month",
+            "id" =>  rand(11111,99999),
             "currency" => "usd",
             "amount" => $amount,
         ));
@@ -124,6 +124,21 @@ class RequestController extends Controller
         } catch (Exception $e) {
             return back()->with('success',$e->getMessage());
         }
+        // charge the customer
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        try {
+            $charge = \Stripe\Charge::create([
+                'amount' => $amount,
+                'currency' => 'usd',
+                'customer' => $customer->id,
+                'metadata' => [
+                    'product_name' => 'Subscription plan'
+                ]
+            ]);
+
+        } catch (Exception $e) {
+            return back()->with('success',$e->getMessage());
+        }
         // create subscriptions
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         try {
@@ -135,9 +150,10 @@ class RequestController extends Controller
         } catch (Exception $e) {
             return back()->with('success',$e->getMessage());
         }
+
         // subsrcibed the user first in user table
         try{
-            User::where('id', Auth::user()->id)->update(array('subscriptions' => 1,'sub_id' => $sub->id ));
+            User::where('id', Auth::user()->id)->update(array('subscriptions' => 1,'s_sub_id' => $sub->id,'s_plan_id' => $plan->id, 's_cus_id' =>$customer->id));
         }catch(Exception $e){
             return back()->with('success',$e->getMessage());
         }
@@ -189,6 +205,12 @@ class RequestController extends Controller
                 if ($r_request == 0)
                 {
                     User::where('id', Auth::user()->id)->update(array('subscriptions' => 0));
+                    \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+                    $sub = \Stripe\Subscription::retrieve(Auth::user()->s_sub_id);
+                    $sub->cancel();
+                    \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+                    $plan = \Stripe\Plan::retrieve(Auth::user()->s_plan_id);
+                    $plan->delete();
                 }
             }catch(Exception $e){
                 return back()->with('success',$e->getMessage());
